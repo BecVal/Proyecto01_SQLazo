@@ -1,13 +1,11 @@
 package mx.unam.ciencias.myp.pumabank.model;
 
-import mx.unam.ciencias.myp.pumabank.patterns.state.AccountState;
-
-import mx.unam.ciencias.myp.pumabank.patterns.strategy.InterestCalculation;
-import mx.unam.ciencias.myp.pumabank.patterns.observer.Observer;
-
-import java.util.Objects;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import mx.unam.ciencias.myp.pumabank.patterns.observer.Observer;
+import mx.unam.ciencias.myp.pumabank.patterns.state.AccountState;
+import mx.unam.ciencias.myp.pumabank.patterns.strategy.InterestCalculation;
 
 /**
  * This represents a bank account within the PumaBank system.
@@ -73,7 +71,7 @@ public class Account implements IAccount {
      * @param amount the amount to deposit
      */
     @Override
-    public void deposit(double amount) {
+    public void deposit(double amount, String pin) {
         validatePositive(amount, "Deposit amount");
 
         state.deposit(amount, this);

@@ -12,9 +12,11 @@ package mx.unam.ciencias.myp.pumabank.model;
 public interface IAccount {
     /**
      * Deposits the given amount into the account.
+     * PIN validation is handled by the Proxy.
      * @param amount the amount to deposit
+     * @param pin the client PIN for authentication
      */
-    void deposit(double amount);
+    void deposit(double amount, String pin);
 
     /**
      * Withdraws the given amount from the account.
