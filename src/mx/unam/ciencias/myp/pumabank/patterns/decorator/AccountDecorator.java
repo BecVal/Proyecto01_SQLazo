@@ -110,7 +110,7 @@ public abstract class AccountDecorator implements IAccount {
             Method m = current.getClass().getMethod("recordFee", double.class);
             m.invoke(current, fee);
         } catch (Exception e) {
-            System.err.println("No se pudo registrar el fee: " + e.getMessage());
+            System.err.println("Could not record fee: " + e.getMessage());
         }
     }
 
@@ -133,7 +133,7 @@ public abstract class AccountDecorator implements IAccount {
             Method m = current.getClass().getMethod("recordInterest", double.class);
             m.invoke(current, interest);
         } catch (Exception e) {
-            System.err.println("No se pudo registrar el interés: " + e.getMessage());
+            System.err.println("Could not record interest: " + e.getMessage());
         }
     }
 }

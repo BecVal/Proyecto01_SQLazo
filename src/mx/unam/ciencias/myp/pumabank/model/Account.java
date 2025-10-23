@@ -203,7 +203,7 @@ public class Account implements IAccount {
     }
 
     /**
-     * Registra un cargo aplicado para el reporte mensual
+     * Records a fee applied for the monthly report.
      */
     public void recordFee(double fee) {
         if (facade != null) {
@@ -212,7 +212,7 @@ public class Account implements IAccount {
     }
     
     /**
-     * Registra un interés pagado para el reporte mensual  
+     * Records an interest payment for the monthly report.
      */
     public void recordInterest(double interest) {
         if (facade != null) {

@@ -112,7 +112,7 @@ public class AccountProxy implements IAccount {
         try {
             realAccount.recordFee(fee);
         } catch (Exception e) {
-            // Propagate or log as appropriate; for now print to stderr
+
             System.err.println("Error recording fee on account: " + e.getMessage());
         }
     }
@@ -152,5 +152,18 @@ public class AccountProxy implements IAccount {
         } catch (Exception e) {
             System.err.println("Error notifying observers: " + e.getMessage());
         }
+    }
+
+    /**
+     * Returns the underlying real {@link Account} instance.
+     * <p>
+     * This accessor avoids the need for reflection in higher-level code
+     * that needs to inspect or operate on the concrete account object.
+     * </p>
+     *
+     * @return the wrapped {@link Account}
+     */
+    public Account getUnderlyingAccount() {
+        return realAccount;
     }
 }

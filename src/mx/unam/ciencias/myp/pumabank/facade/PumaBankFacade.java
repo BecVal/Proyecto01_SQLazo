@@ -16,7 +16,6 @@ import mx.unam.ciencias.myp.pumabank.patterns.strategy.periods.AnnualInterest;
 import mx.unam.ciencias.myp.pumabank.patterns.strategy.periods.MonthlyInterest;
 import mx.unam.ciencias.myp.pumabank.patterns.strategy.periods.PremiumInterest;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -41,6 +40,8 @@ public class PumaBankFacade {
     private Map<String, AccountProxy> accountProxies;
     private List<Observer> globalObservers;
     private MonthlyLogger monthlyLogger;
+    private boolean suppressLogTimestamps = false;
+    private boolean quietMode = false;
     
     private int monthlyTransactions;
     private double totalFeesCollected;
@@ -61,6 +62,22 @@ public class PumaBankFacade {
         this.totalInterestPaid = 0;
         
         registerGlobalObservers();
+    }
+
+    /**
+     * When set to true, the monthly logger will avoid writing system timestamps
+     * in the monthly report headers/footers (useful for deterministic simulations).
+     */
+    public void setSuppressLogTimestamps(boolean suppress) {
+        this.suppressLogTimestamps = suppress;
+    }
+
+    /**
+     * When true, the facade will avoid printing detailed progress and report
+     * information to the console (useful for headless simulations).
+     */
+    public void setQuietMode(boolean quiet) {
+        this.quietMode = quiet;
     }
 
     /**
@@ -93,7 +110,7 @@ public class PumaBankFacade {
         
         monthlyLogger.logSystemOperation("CLIENT_REGISTERED", 
             "Client: " + name + " (ID: " + clientId + ")");
-        System.out.println("Cliente registrado: " + client);
+        System.out.println("Registered client: " + client);
         return client;
     }
 
@@ -123,7 +140,7 @@ public class PumaBankFacade {
                                      String interestType, List<String> services) {
         Client client = clients.get(clientId);
         if (client == null) {
-            throw new IllegalArgumentException("Cliente no encontrado: " + clientId);
+            throw new IllegalArgumentException("Client not found: " + clientId);
         }
 
         InterestCalculation interestPolicy = createInterestPolicy(interestType);
@@ -154,7 +171,7 @@ public class PumaBankFacade {
                         decoratedAccount = new RewardsProgramDecorator(decoratedAccount);
                         break;
                     default:
-                        System.err.println("Servicio desconocido: " + service);
+                        System.err.println("Unknown service: " + service);
                 }
             }
         }
@@ -170,8 +187,8 @@ public class PumaBankFacade {
             String.format("Account: %s | Client: %s | Balance: $%.2f | Interest: %s | Services: %s",
                 accountId, client.getName(), initialBalance, interestType, servicesText));
         
-        System.out.println("Cuenta creada para " + client.getName() + 
-                         " - Saldo inicial: $" + initialBalance);
+        System.out.println("Account created for " + client.getName() + 
+                         " - Initial balance: $" + initialBalance);
         
         return accountProxy;
     }
@@ -184,17 +201,17 @@ public class PumaBankFacade {
      * @throws IllegalArgumentException if the supplied type is not supported
      */
     private InterestCalculation createInterestPolicy(String interestType) {
-        switch (interestType.toUpperCase()) {
+    switch (interestType.toUpperCase()) {
             case "MONTHLY":
                 return new MonthlyInterest(0.01, 1000.0);
             case "ANNUAL":
                 AnnualInterest annual = new AnnualInterest(0.12, 50000.0);
-                annual.setCurrentMonth(12); // Configurar para que pague en diciembre
+                annual.setCurrentMonth(12); // Configure to pay in December
                 return annual;
             case "PREMIUM":
                 return new PremiumInterest(0.015, 100000.0, 500000.0, 0.005, 0.01);
             default:
-                throw new IllegalArgumentException("Tipo de interés no válido: " + interestType);
+                throw new IllegalArgumentException("Invalid interest type: " + interestType);
         }
     }
 
@@ -211,13 +228,13 @@ public class PumaBankFacade {
      */
     public void deposit(String accountId, double amount, String pin) {
         IAccount account = findDecoratedAccount(accountId);
-        if (account != null) {
+    if (account != null) {
             monthlyLogger.logSystemOperation("DEPOSIT_ATTEMPT", 
                 String.format("Account: %s | Amount: $%.2f", accountId, amount));
             account.deposit(amount, pin);
             recordTransaction();
-        } else {
-            throw new IllegalArgumentException("Cuenta no encontrada: " + accountId);
+            } else {
+            throw new IllegalArgumentException("Account not found: " + accountId);
         }
     }
 
@@ -238,7 +255,7 @@ public class PumaBankFacade {
             account.withdraw(amount, pin);
             recordTransaction();
         } else {
-            throw new IllegalArgumentException("Cuenta no encontrada: " + accountId);
+            throw new IllegalArgumentException("Account not found: " + accountId);
         }
     }
 
@@ -259,7 +276,7 @@ public class PumaBankFacade {
             recordTransaction();
             return balance;
         } else {
-            throw new IllegalArgumentException("Cuenta no encontrada: " + accountId);
+            throw new IllegalArgumentException("Account not found: " + accountId);
         }
     }
 
@@ -272,18 +289,18 @@ public class PumaBankFacade {
      * state transitions. The method also collects aggregated metrics and
      * produces a monthly report via {@link MonthlyLogger}.</p>
      */
-    public void processMonthlyOperations() {
+    public void processMonthlyOperations(int simulatedMonth) {
 
-        monthlyLogger.startMonthlyReport();
+        monthlyLogger.startMonthlyReport(simulatedMonth, !suppressLogTimestamps);
         monthlyLogger.logSystemOperation("MONTHLY_PROCESSING_START", 
             "Starting monthly operations for " + getTotalAccounts() + " accounts");
-        
+
         monthlyTransactions = 0;
         totalFeesCollected = 0;
         totalInterestPaid = 0;
-        
-        System.out.println("=== INICIANDO PROCESOS MENSUALES PUMA BANK ===");
-        
+
+        if (!quietMode) System.out.println("=== STARTING PUMA BANK MONTHLY PROCESSES ===");
+
         for (List<IAccount> accounts : clientAccounts.values()) {
             for (IAccount account : accounts) {
                 String accountId = getAccountId(account);
@@ -292,7 +309,7 @@ public class PumaBankFacade {
                     monthlyLogger.logSystemOperation("ACCOUNT_PROCESSING_START", 
                         "Processing account: " + accountId);
                     
-                    System.out.println("Procesando cuenta: " + accountId);
+                    if (!quietMode) System.out.println("Processing account: " + accountId);
                     account.processMonth();
                     
                     monthlyTransactions++;
@@ -300,24 +317,27 @@ public class PumaBankFacade {
                         "Completed processing account: " + accountId);
                         
                 } catch (Exception e) {
-                    monthlyLogger.logSystemOperation("ACCOUNT_PROCESSING_ERROR", 
+                        monthlyLogger.logSystemOperation("ACCOUNT_PROCESSING_ERROR", 
                         "Error processing account " + accountId + ": " + e.getMessage());
-                    System.err.println("Error procesando cuenta " + accountId + ": " + e.getMessage());
+                    if (!quietMode) System.err.println("Error processing account " + accountId + ": " + e.getMessage());
                 }
             }
         }
-
         monthlyLogger.logSystemOperation("MONTHLY_PROCESSING_END", 
             "Completed monthly operations. Transactions: " + monthlyTransactions);
         monthlyLogger.endMonthlyReport(
             getTotalAccounts(), 
             monthlyTransactions, 
             totalFeesCollected, 
-            totalInterestPaid
+            totalInterestPaid,
+            !suppressLogTimestamps,
+            simulatedMonth
         );
-        
-        System.out.println("=== PROCESOS MENSUALES COMPLETADOS ===");
-        System.out.println("Reporte detallado guardado en: monthly_operations_log.txt");
+
+        if (!quietMode) {
+            System.out.println("=== MONTHLY PROCESSES COMPLETED ===");
+            System.out.println("Detailed report saved to: monthly_operations_log.txt");
+        }
     }
 
     /**
@@ -416,24 +436,58 @@ public class PumaBankFacade {
      * @return the underlying {@link IAccount} instance
      */
     private IAccount getRealAccount(IAccount account) {
-    IAccount current = account;
-    
-    while (current instanceof AccountDecorator) {
-        current = ((AccountDecorator) current).decoratedAccount;
-    }
-    
-    if (current instanceof AccountProxy) {
-        try {
-            Field realAccountField = AccountProxy.class.getDeclaredField("realAccount");
-            realAccountField.setAccessible(true);
-            return (IAccount) realAccountField.get(current);
-        } catch (Exception e) {
-            return current;
+        IAccount current = account;
+
+        while (current instanceof AccountDecorator) {
+            current = ((AccountDecorator) current).decoratedAccount;
         }
-    }
-    
-    return current;
+
+        if (current instanceof AccountProxy) {
+            // Use the safe accessor on AccountProxy instead of reflection
+            AccountProxy proxy = (AccountProxy) current;
+            return proxy.getUnderlyingAccount();
+        }
+
+        return current;
 }
+
+    /**
+     * Deletes an account by its identifier.
+     * <p>
+     * The account will be removed from the client's account list and the
+     * proxy registry. Observers will no longer receive updates for this
+     * account. If the account is not found, the method returns {@code false}.
+     * </p>
+     *
+     * @param accountId identifier of the account to remove (format: clientId-ACC-n)
+     * @return {@code true} if the account was found and removed; {@code false} otherwise
+     */
+    public boolean deleteAccount(String accountId) {
+        String[] parts = accountId.split("-");
+        if (parts.length < 3) return false;
+        String clientId = parts[0];
+
+        List<IAccount> accounts = clientAccounts.get(clientId);
+        if (accounts == null) return false;
+
+        IAccount toRemove = null;
+        for (IAccount acc : accounts) {
+            if (getAccountId(acc).equals(accountId)) {
+                toRemove = acc;
+                break;
+            }
+        }
+
+        if (toRemove == null) return false;
+
+        accounts.remove(toRemove);
+        accountProxies.remove(accountId);
+
+        monthlyLogger.logSystemOperation("ACCOUNT_DELETED",
+            String.format("Account removed: %s", accountId));
+
+        return true;
+    }
 
     /**
      * Returns a simplified portfolio summary for the given client.
@@ -446,7 +500,7 @@ public class PumaBankFacade {
     public Map<String, Object> getClientPortfolio(String clientId) {
         List<IAccount> accounts = clientAccounts.get(clientId);
         if (accounts == null) {
-            throw new IllegalArgumentException("Cliente no encontrado: " + clientId);
+            throw new IllegalArgumentException("Client not found: " + clientId);
         }
 
         double totalBalance = 0.0;
@@ -459,7 +513,7 @@ public class PumaBankFacade {
                     totalBalance += balance;
                 }
             } catch (Exception e) {
-                System.err.println("Error obteniendo balance para portafolio: " + e.getMessage());
+                System.err.println("Error getting balance for portfolio: " + e.getMessage());
             }
         }
 
