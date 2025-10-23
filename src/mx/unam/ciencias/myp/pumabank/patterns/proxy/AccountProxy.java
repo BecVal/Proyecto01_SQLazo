@@ -101,4 +101,56 @@ public class AccountProxy implements IAccount {
     public void processMonth() {
         realAccount.processMonth();
     }
+
+    /**
+     * Records a fee on the underlying account. This is exposed so decorators
+     * can invoke fee recording through the proxy without needing reflection.
+     *
+     * @param fee the fee amount to record
+     */
+    public void recordFee(double fee) {
+        try {
+            realAccount.recordFee(fee);
+        } catch (Exception e) {
+            // Propagate or log as appropriate; for now print to stderr
+            System.err.println("Error recording fee on account: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Records an interest payment on the underlying account.
+     *
+     * @param interest the interest amount to record
+     */
+    public void recordInterest(double interest) {
+        try {
+            realAccount.recordInterest(interest);
+        } catch (Exception e) {
+            System.err.println("Error recording interest on account: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Adds an entry to the underlying account history.
+     * @param event the history event to add
+     */
+    public void addHistory(String event) {
+        try {
+            realAccount.addHistory(event);
+        } catch (Exception e) {
+            System.err.println("Error adding history to account: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Notifies observers registered on the underlying account.
+     * @param message the message to notify
+     */
+    public void notifyObservers(String message) {
+        try {
+            realAccount.notify(message);
+        } catch (Exception e) {
+            System.err.println("Error notifying observers: " + e.getMessage());
+        }
+    }
 }
