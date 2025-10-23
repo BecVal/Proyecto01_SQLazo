@@ -5,17 +5,13 @@ import java.util.Arrays;
 import java.util.Map;
 
 /**
- * Clase principal que demuestra el funcionamiento completo del sistema PumaBank
- * con todos los patrones de diseño implementados.
+ * Main class to simulate the PumaBank system with various account operations.
  * 
- * <p>Esta simulación incluye:
- * - Registro de clientes
- * - Creación de cuentas con diferentes servicios
- * - Operaciones bancarias (depósitos, retiros)
- * - Procesamiento mensual completo
- * - Consulta de portafolios
- * - Generación de reporte detallado
- * </p>
+ * <p>
+ * This class demonstrates the registration of clients, creation of accounts with different services,
+ * various account operations (deposits, withdrawals, balance checks), end-of-month processing,
+ * and portfolio consultations. It also outputs final system metrics.
+ * /p
  */
 public class Main {
     
@@ -121,7 +117,14 @@ public class Main {
     }
     
     /**
-     * Consulta y muestra el portafolio de un cliente
+     * Consults and prints the portfolio details for a given client.
+     * 
+     * <p>
+     * This method retrieves the portfolio information for the specified client ID
+     * and prints the client's name, total number of accounts, and total balance across all accounts.
+     * </p>
+     * @param pumaBank the PumaBankFacade instance to use for the consultation
+     * @param clientId the ID of the client whose portfolio is to be consulted
      */
     private static void consultarPortafolio(PumaBankFacade pumaBank, String clientId) {
         try {
