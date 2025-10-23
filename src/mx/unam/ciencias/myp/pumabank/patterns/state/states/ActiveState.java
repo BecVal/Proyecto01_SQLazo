@@ -19,11 +19,12 @@ public class ActiveState implements AccountState {
      */
     @Override
     public void deposit(double amount, Account account) {
+        double balanceBefore = account.getBalance();
 
         account.setBalance(account.getBalance() + amount);
         account.addHistory("Deposited: " + amount + ", New Balance: " + account.getBalance());
-        account.notify("Deposit recorded. New balance: $" + account.getBalance());
-
+        account.notify(String.format("DEPOSIT: $%.2f | Balance Before: $%.2f | Balance After: $%.2f", 
+            amount, balanceBefore, account.getBalance()));
     }
 
     /**
@@ -37,22 +38,27 @@ public class ActiveState implements AccountState {
         if (current >= amount) {
 
             double newBalance = current - amount;
+            double balanceBefore = account.getBalance();
             account.setBalance(newBalance);
             account.addHistory("Withdrawal: $" + amount + " | Balance: $" + newBalance);
-            account.notify("Withdrawal executed. New balance: $" + newBalance);
+             
+            account.notify(String.format("WITHDRAWAL: $%.2f | Balance Before: $%.2f | Balance After: $%.2f", 
+                amount, balanceBefore, newBalance));
 
         } else {
             double newBalance = current - amount;
+            double balanceBefore = account.getBalance();
             account.setBalance(newBalance);
             account.addHistory("Withdrawal exceeded funds. Overdraft triggered. Amount: $" 
                     + amount + " | Balance: $" + newBalance);
             account.changeState(new OverdrawnState());
             account.addHistory("State changed -> OverdrawnState");
-            account.notify("Account entered OverdrawnState with balance $" + newBalance);
-
+            
+            account.notify(String.format("WITHDRAWAL_OVERDRAFT: $%.2f | Balance Before: $%.2f | Balance After: $%.2f | STATE: Active -> Overdrawn", 
+                amount, balanceBefore, newBalance));
         }
-
     }
+
 
     /**
      * Processes the monthly update for the account.
@@ -62,17 +68,22 @@ public class ActiveState implements AccountState {
      * 
      * @param account the account being processed
      */
-    
     @Override
     public void processMonth(Account account) {
         if (account.getBalance() < 0) {
+            String previousState = "ActiveState";
             account.changeState(new OverdrawnState());
             account.addHistory("Detected negative balance during month-end. Switched -> OverdrawnState");
+            
+            account.notify(String.format("STATE_CHANGE: %s -> OverdrawnState | Reason: Negative balance detected", 
+                previousState));
+            
             account.notify("Delegating month-end processing to OverdrawnState.");
             account.processMonth();
             return;
         }
 
+        double balanceBefore = account.getBalance();
         double interest = 0.0;
         if (account.getInterestPolicy() != null) {
             interest = account.getInterestPolicy().calculate(account.getBalance());
@@ -82,17 +93,22 @@ public class ActiveState implements AccountState {
             account.setBalance(account.getBalance() + interest);
             account.addHistory("Monthly interest applied: $" + interest  
                     + " | Balance: $" + account.getBalance());
+            
+            account.recordInterest(interest);
+                    
+            account.notify(String.format("INTEREST_APPLIED: $%.2f | Balance Before: $%.2f | Balance After: $%.2f", 
+                interest, balanceBefore, account.getBalance()));
         } else {
             account.addHistory("Monthly processing: no interest applied.");
+            account.notify("MONTHLY_PROCESSING: No interest applied to active account");
         }
 
-        account.notify("Monthly summary: balance $" + account.getBalance());
+        account.notify("MONTHLY_SUMMARY: Active account processed");
     }
 
     /**
-     * Called when attempting to unfreeze an already active account.
-     *
-     * @param account the account being processed
+     * Unfreeze operation has no effect in ActiveState.
+     * @param account the account being modified
      */
     @Override
     public void unfreeze(Account account) {

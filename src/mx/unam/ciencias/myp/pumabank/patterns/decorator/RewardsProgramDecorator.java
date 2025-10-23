@@ -32,8 +32,8 @@ public class RewardsProgramDecorator extends AccountDecorator {
      * @param amount the amount to deposit
      */
     @Override
-    public void deposit(double amount) {
-        super.deposit(amount);
+    public void deposit(double amount, String pin) {
+        super.deposit(amount, pin);
         addRewardPoints(amount);
     }
 
@@ -54,9 +54,19 @@ public class RewardsProgramDecorator extends AccountDecorator {
      */
     @Override
     public void processMonth() {
-        super.withdraw(REWARDS_FEE, "0000");
+        notify(String.format("SERVICE_FEE_PENDING: Rewards Program - $%.2f | Current Points: %d", 
+            REWARDS_FEE, rewardPoints));
+        
+        super.withdraw(REWARDS_FEE, "SYSTEM");
+
+        recordFee(REWARDS_FEE);
+
         addHistory("Rewards program fee applied: $" + REWARDS_FEE);
+        
+        notify(String.format("SERVICE_FEE_APPLIED: Rewards Program - $%.2f | Points Balance: %d", 
+            REWARDS_FEE, rewardPoints));
         notify("Rewards program: Monthly fee applied. Current points: " + rewardPoints);
+        
         super.processMonth();
     }
 
@@ -71,7 +81,8 @@ public class RewardsProgramDecorator extends AccountDecorator {
         addHistory("Reward points earned: " + pointsEarned + " | Total: " + rewardPoints);
         
         if (pointsEarned > 0) {
-            notify("Rewards: Earned " + pointsEarned + " points! Total: " + rewardPoints);
+            notify(String.format("REWARDS: Earned %d points from transaction of $%.2f | Total: %d points", 
+                pointsEarned, transactionAmount, rewardPoints));
         }
     }
 
@@ -83,12 +94,14 @@ public class RewardsProgramDecorator extends AccountDecorator {
     public void redeemPoints(int points) {
         if (points <= rewardPoints) {
             double cashValue = points * 0.1;
-            super.deposit(cashValue);
+            super.deposit(cashValue, "SYSTEM");
             rewardPoints -= points;
             addHistory("Points redeemed: " + points + " for $" + cashValue);
-            notify("Rewards: Redeemed " + points + " points for $" + cashValue);
+            notify(String.format("REWARDS_REDEMPTION: %d points redeemed for $%.2f", 
+                points, cashValue));
         } else {
-            notify("Rewards: Insufficient points. Available: " + rewardPoints);
+            notify(String.format("REWARDS_ERROR: Insufficient points. Available: %d, Requested: %d", 
+                rewardPoints, points));
         }
     }
 

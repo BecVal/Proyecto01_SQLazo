@@ -1,8 +1,9 @@
 package mx.unam.ciencias.myp.pumabank.patterns.decorator;
 
 import mx.unam.ciencias.myp.pumabank.model.IAccount;
+import mx.unam.ciencias.myp.pumabank.patterns.proxy.AccountProxy;
+
 import java.lang.reflect.Method;
-import java.lang.reflect.InvocationTargetException;
 
 /**
  * Abstract decorator class for {@link IAccount} implementations.
@@ -12,7 +13,7 @@ import java.lang.reflect.InvocationTargetException;
  * </p>
  */
 public abstract class AccountDecorator implements IAccount {
-    protected IAccount decoratedAccount;
+    public IAccount decoratedAccount;
 
     /**
      * Constructs an {@code AccountDecorator} that wraps the specified {@link IAccount}.
@@ -27,8 +28,8 @@ public abstract class AccountDecorator implements IAccount {
      * {@inheritDoc}
      */
     @Override
-    public void deposit(double amount) {
-        decoratedAccount.deposit(amount);
+    public void deposit(double amount, String pin) {
+        decoratedAccount.deposit(amount, pin);
     }
 
     /**
@@ -61,11 +62,14 @@ public abstract class AccountDecorator implements IAccount {
      * @param event the event to be added
      */
     protected void addHistory(String event) {
-        try {
-            Method m = decoratedAccount.getClass().getMethod("addHistory", String.class);
-            m.invoke(decoratedAccount, event);
-        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-            
+        if (decoratedAccount instanceof AccountProxy) {
+            ((AccountProxy) decoratedAccount).addHistory(event);
+            return;
+        }
+
+        if (decoratedAccount instanceof AccountDecorator) {
+            ((AccountDecorator) decoratedAccount).addHistory(event);
+            return;
         }
     }
 
@@ -75,11 +79,61 @@ public abstract class AccountDecorator implements IAccount {
      * @param message the message to be sent to observers
      */
     protected void notify(String message) {
+        if (decoratedAccount instanceof AccountProxy) {
+            ((AccountProxy) decoratedAccount).notifyObservers(message);
+            return;
+        }
+
+        if (decoratedAccount instanceof AccountDecorator) {
+            ((AccountDecorator) decoratedAccount).notify(message);
+            return;
+        }
+    }
+
+    /**
+     * Records a fee charged to the account.
+     *
+     * @param fee the fee amount to be recorded
+     */
+    protected void recordFee(double fee) {
+    IAccount current = decoratedAccount;
+        while (current instanceof AccountDecorator) {
+            current = ((AccountDecorator) current).decoratedAccount;
+        }
+
+        if (current instanceof AccountProxy) {
+            ((AccountProxy) current).recordFee(fee);
+            return;
+        }
+
         try {
-            Method m = decoratedAccount.getClass().getMethod("notify", String.class);
-            m.invoke(decoratedAccount, message);
-        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-           
+            Method m = current.getClass().getMethod("recordFee", double.class);
+            m.invoke(current, fee);
+        } catch (Exception e) {
+            System.err.println("No se pudo registrar el fee: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Records interest earned.
+     * @param interest the interest amount to be recorded
+     */
+    protected void recordInterest(double interest) {
+        IAccount current = decoratedAccount;
+        while (current instanceof AccountDecorator) {
+            current = ((AccountDecorator) current).decoratedAccount;
+        }
+
+        if (current instanceof AccountProxy) {
+            ((AccountProxy) current).recordInterest(interest);
+            return;
+        }
+
+        try {
+            Method m = current.getClass().getMethod("recordInterest", double.class);
+            m.invoke(current, interest);
+        } catch (Exception e) {
+            System.err.println("No se pudo registrar el interés: " + e.getMessage());
         }
     }
 }

@@ -28,9 +28,9 @@ public class PremiumAlertsDecorator extends AccountDecorator {
      * @param amount the amount to deposit
      */
     @Override
-    public void deposit(double amount) {
-        super.deposit(amount);
-        notify("PREMIUM ALERT: Deposit of $" + amount + " completed");
+    public void deposit(double amount, String pin) {
+        super.deposit(amount, pin);
+        notify(String.format("PREMIUM_ALERT: Deposit of $%.2f completed", amount));
     }
 
     /**
@@ -42,7 +42,7 @@ public class PremiumAlertsDecorator extends AccountDecorator {
     @Override
     public void withdraw(double amount, String pin) {
         super.withdraw(amount, pin);
-        notify("PREMIUM ALERT: Withdrawal of $" + amount + " completed");
+        notify(String.format("PREMIUM_ALERT: Withdrawal of $%.2f completed", amount));
     }
 
     /**
@@ -50,10 +50,18 @@ public class PremiumAlertsDecorator extends AccountDecorator {
      */
     @Override
     public void processMonth() {
-        // Aplica cargo mensual por alertas premium
-        super.withdraw(ALERTS_FEE, "0000");
+
+        notify(String.format("SERVICE_FEE_PENDING: Premium Alerts - $%.2f", ALERTS_FEE));
+        
+        super.withdraw(ALERTS_FEE, "SYSTEM");
+
+        recordFee(ALERTS_FEE);
+
         addHistory("Premium alerts service fee applied: $" + ALERTS_FEE);
+        
+        notify(String.format("SERVICE_FEE_APPLIED: Premium Alerts - $%.2f", ALERTS_FEE));
         notify("PREMIUM ALERT: Monthly service fee applied: $" + ALERTS_FEE);
+        
         super.processMonth();
     }
 
@@ -66,7 +74,7 @@ public class PremiumAlertsDecorator extends AccountDecorator {
     @Override
     public double checkBalance(String pin) {
         double balance = super.checkBalance(pin);
-        notify("PREMIUM ALERT: Balance checked - $" + balance);
+        notify(String.format("PREMIUM_ALERT: Balance checked - $%.2f", balance));
         return balance;
     }
 }

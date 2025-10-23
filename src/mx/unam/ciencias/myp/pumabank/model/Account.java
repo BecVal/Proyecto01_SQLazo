@@ -6,6 +6,7 @@ import java.util.Objects;
 import mx.unam.ciencias.myp.pumabank.patterns.observer.Observer;
 import mx.unam.ciencias.myp.pumabank.patterns.state.AccountState;
 import mx.unam.ciencias.myp.pumabank.patterns.strategy.InterestCalculation;
+import mx.unam.ciencias.myp.pumabank.facade.PumaBankFacade;;
 
 /**
  * This represents a bank account within the PumaBank system.
@@ -27,6 +28,7 @@ public class Account implements IAccount {
     private Client client;
 
     private List<Observer> observers;
+    private PumaBankFacade facade;
 
 
     /**
@@ -38,12 +40,13 @@ public class Account implements IAccount {
      * @param interestPolicy the strategy used for interest calculations
      * @throws NullPointerException if any of the non-null parameters are null
      */
-    public Account(Client client, double initialBalance, AccountState initialState, InterestCalculation interestPolicy) {
+    public Account(Client client, double initialBalance, AccountState initialState, InterestCalculation interestPolicy, PumaBankFacade facade) {
         this.client = Objects.requireNonNull(client);
         this.state = Objects.requireNonNull(initialState);
         this.interestPolicy = Objects.requireNonNull(interestPolicy);
         this.balance = initialBalance;
         this.history = new ArrayList<>();
+        this.facade = Objects.requireNonNull(facade);
         this.observers = new ArrayList<>();
     }
 
@@ -74,7 +77,12 @@ public class Account implements IAccount {
     public void deposit(double amount, String pin) {
         validatePositive(amount, "Deposit amount");
 
-        state.deposit(amount, this);
+        if ("SYSTEM".equals(pin) || "0000".equals(pin)) {
+            state.deposit(amount, this);
+            addHistory("System deposit: $" + amount + " | Balance: $" + balance);
+        } else {
+            state.deposit(amount, this);
+        }
     }
 
     /**
@@ -87,9 +95,14 @@ public class Account implements IAccount {
      */
     @Override
     public void withdraw(double amount, String pin) {
-
         validatePositive(amount, "Withdraw amount");
-        state.withdraw(amount, this);
+
+    if ("SYSTEM".equals(pin) || "0000".equals(pin)) {
+            state.withdraw(amount, this);
+            addHistory("System withdrawal: $" + amount + " | Balance: $" + balance);
+        } else {
+            state.withdraw(amount, this);
+        }
 
     }
 
@@ -190,8 +203,29 @@ public class Account implements IAccount {
     }
 
     /**
+     * Registra un cargo aplicado para el reporte mensual
+     */
+    public void recordFee(double fee) {
+        if (facade != null) {
+            facade.recordFeeCollection(fee);
+        }
+    }
+    
+    /**
+     * Registra un interés pagado para el reporte mensual  
+     */
+    public void recordInterest(double interest) {
+        if (facade != null) {
+            facade.recordInterestPayment(interest);
+        }
+    }
+
+    public Account(Client client, double initialBalance, AccountState initialState, InterestCalculation interestPolicy) {
+        this(client, initialBalance, initialState, interestPolicy, null);
+    }
+
+    /**
      * Returns the list of all recorded events in this account’s history.
-     * 
      *
      * @return the list of event descriptions
      */
