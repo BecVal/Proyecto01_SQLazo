@@ -29,7 +29,7 @@ Puedes compilar y ejecutar el programa directamente desde la terminal usando los
 El siguiente comando compilará todos los archivos `.java` que se encuentran en el directorio `src/` y dejará los archivos `.class` compilados en un nuevo directorio llamado `out/`.
 
 ```bash
-javac -d out src/main/java/mx/unam/ciencias/pumabank/**/*.java
+javac -d out -sourcepath src src\mx\unam\ciencias\myp\pumabank\Main.java
 ```
 
   * **`javac`**: Es el compilador de Java.
@@ -43,7 +43,7 @@ javac -d out src/main/java/mx/unam/ciencias/pumabank/**/*.java
 Una vez compilado, puedes ejecutar el programa con el siguiente comando (asumiendo que tu clase principal se llama `App` en el paquete raíz `mx.unam.ciencias.pumabank`):
 
 ```bash
-java -cp out mx.unam.ciencias.pumabank.App
+java -cp out mx.unam.ciencias.myp.pumabank.Main
 ```
 
   * **`java`**: Es la Máquina Virtual de Java (JVM) que ejecuta el código.
