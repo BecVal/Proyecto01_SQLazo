@@ -1,0 +1,17 @@
+-------------------------------------------------------------------------------
+Test set: mx.unam.ciencias.myp.pumabank.test.patterns.state.states.ActiveStateTest$Unfreeze
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! -- in mx.unam.ciencias.myp.pumabank.test.patterns.state.states.ActiveStateTest$Unfreeze
+mx.unam.ciencias.myp.pumabank.test.patterns.state.states.ActiveStateTest$Unfreeze.alreadyActive -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.NullPointerException
+	at java.base/java.util.Objects.requireNonNull(Objects.java:220)
+	at mx.unam.ciencias.myp.pumabank.model.Account.<init>(Account.java:49)
+	at mx.unam.ciencias.myp.pumabank.model.Account.<init>(Account.java:224)
+	at mx.unam.ciencias.myp.pumabank.test.patterns.state.states.ActiveStateTest$FakeAccount.<init>(ActiveStateTest.java:22)
+	at mx.unam.ciencias.myp.pumabank.test.patterns.state.states.ActiveStateTest$AccountHarness.<init>(ActiveStateTest.java:34)
+	at mx.unam.ciencias.myp.pumabank.test.patterns.state.states.ActiveStateTest$Unfreeze.alreadyActive(ActiveStateTest.java:105)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+

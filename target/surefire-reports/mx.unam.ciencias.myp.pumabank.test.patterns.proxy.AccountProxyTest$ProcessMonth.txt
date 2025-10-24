@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: mx.unam.ciencias.myp.pumabank.test.patterns.proxy.AccountProxyTest$ProcessMonth
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.002 s <<< FAILURE! -- in mx.unam.ciencias.myp.pumabank.test.patterns.proxy.AccountProxyTest$ProcessMonth
+mx.unam.ciencias.myp.pumabank.test.patterns.proxy.AccountProxyTest$ProcessMonth.delegatesWithoutAuth -- Time elapsed: 0 s <<< ERROR!
+java.lang.NullPointerException
+	at java.base/java.util.Objects.requireNonNull(Objects.java:220)
+	at mx.unam.ciencias.myp.pumabank.model.Account.<init>(Account.java:49)
+	at mx.unam.ciencias.myp.pumabank.model.Account.<init>(Account.java:224)
+	at mx.unam.ciencias.myp.pumabank.test.patterns.proxy.AccountProxyTest$FakeAccount.<init>(AccountProxyTest.java:21)
+	at mx.unam.ciencias.myp.pumabank.test.patterns.proxy.AccountProxyTest$ProcessMonth.delegatesWithoutAuth(AccountProxyTest.java:98)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+

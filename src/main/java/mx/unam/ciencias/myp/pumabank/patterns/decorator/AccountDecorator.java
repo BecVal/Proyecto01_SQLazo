@@ -1,6 +1,9 @@
 package mx.unam.ciencias.myp.pumabank.patterns.decorator;
 
 import mx.unam.ciencias.myp.pumabank.model.IAccount;
+import mx.unam.ciencias.myp.pumabank.patterns.proxy.AccountProxy;
+
+import java.lang.reflect.Method;
 
 /**
  * Abstract decorator class for {@link IAccount} implementations.
@@ -10,7 +13,7 @@ import mx.unam.ciencias.myp.pumabank.model.IAccount;
  * </p>
  */
 public abstract class AccountDecorator implements IAccount {
-    protected IAccount decoratedAccount;
+    public IAccount decoratedAccount;
 
     /**
      * Constructs an {@code AccountDecorator} that wraps the specified {@link IAccount}.
@@ -54,66 +57,83 @@ public abstract class AccountDecorator implements IAccount {
     }
 
     /**
-     * Attempts to call the {@code addHistory(String)} method on the decorated account.
-     * <p>
-     * 
-     * This protected hook uses reflection to find and invoke a method named {@code addHistory} (with a single {@code String} parameter) on the decorated account.
-     * If such a method does not exist or any reflective exception occurs, the exception is swallowed.
-     * 
-     * </p>
+     * Adds an event to the account's history.
      *
-     * @param event the event description to pass to the underlying account.
+     * @param event the event to be added
      */
     protected void addHistory(String event) {
-        invokeHook("addHistory", event);
+        if (decoratedAccount instanceof AccountProxy) {
+            ((AccountProxy) decoratedAccount).addHistory(event);
+            return;
+        }
+
+        if (decoratedAccount instanceof AccountDecorator) {
+            ((AccountDecorator) decoratedAccount).addHistory(event);
+            return;
+        }
     }
 
     /**
-     * Attempts to call a notification hook on the decorated account.
-     * <p>
-     * This method first looks for a method named {@code notify(String)} on the decorated account and invokes it using reflection. If no such method exists, it will then try {@code notifyObservers(String)} instead.
-     * All reflective exceptions are swallowed.
-     * 
-     * </p>
+     * Notifies observers with a message.
      *
-     * 
-     * @param message the message to send to the underlying account, if applicable
+     * @param message the message to be sent to observers
      */
     protected void notify(String message) {
-        if (!invokeHook("notify", message)) invokeHook("notifyObservers", message);
+        if (decoratedAccount instanceof AccountProxy) {
+            ((AccountProxy) decoratedAccount).notifyObservers(message);
+            return;
+        }
+
+        if (decoratedAccount instanceof AccountDecorator) {
+            ((AccountDecorator) decoratedAccount).notify(message);
+            return;
+        }
     }
 
     /**
-     * Utility method that performs the actual reflective lookup and invocation.
-     * 
-     * <p>
-     * This helper method searches the decorated account's class hierarchy for a declared method with the given name and a single {@code String} parameter.
-     * If found, it makes the method accessible and invokes it. If the method does not exist or an exception occurs during invocation, the method returns {@code false}.
-     * 
-     * </p>
+     * Records a fee charged to the account.
      *
-     * @param methodName the name of the method to look for
-     * 
-     * @param arg the string argument to pass to the invoked method
-     * @return {@code true} if the method was found and successfully invoked; {@code false} otherwise
-     * 
-     * 
+     * @param fee the fee amount to be recorded
      */
-    private boolean invokeHook(String methodName, String arg) {
-        Class<?> c = decoratedAccount.getClass();
-        while (c != null) {
-            try {
-                var m = c.getDeclaredMethod(methodName, String.class);
-                m.setAccessible(true);
-                m.invoke(decoratedAccount, arg);
-                return true;
-            } catch (NoSuchMethodException e) {
-                c = c.getSuperclass();
-            } catch (ReflectiveOperationException e) {
-                return false;
-            }
+    protected void recordFee(double fee) {
+    IAccount current = decoratedAccount;
+        while (current instanceof AccountDecorator) {
+            current = ((AccountDecorator) current).decoratedAccount;
         }
-        return false;
+
+        if (current instanceof AccountProxy) {
+            ((AccountProxy) current).recordFee(fee);
+            return;
+        }
+
+        try {
+            Method m = current.getClass().getMethod("recordFee", double.class);
+            m.invoke(current, fee);
+        } catch (Exception e) {
+            System.err.println("Could not record fee: " + e.getMessage());
+        }
     }
 
+    /**
+     * Records interest earned.
+     * @param interest the interest amount to be recorded
+     */
+    protected void recordInterest(double interest) {
+        IAccount current = decoratedAccount;
+        while (current instanceof AccountDecorator) {
+            current = ((AccountDecorator) current).decoratedAccount;
+        }
+
+        if (current instanceof AccountProxy) {
+            ((AccountProxy) current).recordInterest(interest);
+            return;
+        }
+
+        try {
+            Method m = current.getClass().getMethod("recordInterest", double.class);
+            m.invoke(current, interest);
+        } catch (Exception e) {
+            System.err.println("Could not record interest: " + e.getMessage());
+        }
+    }
 }

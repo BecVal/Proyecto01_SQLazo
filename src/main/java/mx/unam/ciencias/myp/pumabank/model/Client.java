@@ -1,7 +1,5 @@
 package mx.unam.ciencias.myp.pumabank.model;
 
-import java.util.Objects;
-
 /**
  * Represents a bank client with an identifier and name.
  * 
@@ -20,26 +18,13 @@ public class Client {
     /**
      * Creates a new {@code Client} with the given name and identifier.
      *
-     * @param name the client's full name (must not be null or blank)
-     * @param clientId the unique client identifier (must not be null or blank)
-     * @throws NullPointerException if name or clientId is null
-     * @throws IllegalArgumentException if name or clientId is empty or blank
+     * @param name the client's full name
+     * @param clientId the unique client identifier
      */
     public Client(String name, String clientId) {
-        this.name = validateNotBlank(Objects.requireNonNull(name, "name cannot be null"), "name");
-        this.clientId = validateNotBlank(Objects.requireNonNull(clientId, "clientId cannot be null"), "clientId");
+        this.name = name;
+        this.clientId = clientId;
     }
-
-    /**
-     * Validates that a string is not empty or composed only of whitespace.
-     */
-    private static String validateNotBlank(String value, String fieldName) {
-        if (value.isBlank()) {
-            throw new IllegalArgumentException(fieldName + " cannot be empty or blank");
-        }
-        return value;
-    }
-
 
     /**
      * Returns the client's name.

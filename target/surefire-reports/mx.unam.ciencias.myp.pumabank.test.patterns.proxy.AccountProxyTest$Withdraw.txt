@@ -1,0 +1,28 @@
+-------------------------------------------------------------------------------
+Test set: mx.unam.ciencias.myp.pumabank.test.patterns.proxy.AccountProxyTest$Withdraw
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.006 s <<< FAILURE! -- in mx.unam.ciencias.myp.pumabank.test.patterns.proxy.AccountProxyTest$Withdraw
+mx.unam.ciencias.myp.pumabank.test.patterns.proxy.AccountProxyTest$Withdraw.withdrawDelegatesOnValidPin -- Time elapsed: 0.002 s <<< ERROR!
+java.lang.NullPointerException
+	at java.base/java.util.Objects.requireNonNull(Objects.java:220)
+	at mx.unam.ciencias.myp.pumabank.model.Account.<init>(Account.java:49)
+	at mx.unam.ciencias.myp.pumabank.model.Account.<init>(Account.java:224)
+	at mx.unam.ciencias.myp.pumabank.test.patterns.proxy.AccountProxyTest$FakeAccount.<init>(AccountProxyTest.java:21)
+	at mx.unam.ciencias.myp.pumabank.test.patterns.proxy.AccountProxyTest$Withdraw.withdrawDelegatesOnValidPin(AccountProxyTest.java:62)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+
+mx.unam.ciencias.myp.pumabank.test.patterns.proxy.AccountProxyTest$Withdraw.withdrawDeniedOnInvalidPin -- Time elapsed: 0.002 s <<< ERROR!
+java.lang.NullPointerException
+	at java.base/java.util.Objects.requireNonNull(Objects.java:220)
+	at mx.unam.ciencias.myp.pumabank.model.Account.<init>(Account.java:49)
+	at mx.unam.ciencias.myp.pumabank.model.Account.<init>(Account.java:224)
+	at mx.unam.ciencias.myp.pumabank.test.patterns.proxy.AccountProxyTest$FakeAccount.<init>(AccountProxyTest.java:21)
+	at mx.unam.ciencias.myp.pumabank.test.patterns.proxy.AccountProxyTest$Withdraw.withdrawDeniedOnInvalidPin(AccountProxyTest.java:70)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+

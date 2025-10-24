@@ -1,11 +1,14 @@
+mx/unam/ciencias/myp/pumabank/patterns/strategy/periods/AnnualInterest.class
 mx/unam/ciencias/myp/pumabank/model/Account.class
 mx/unam/ciencias/myp/pumabank/patterns/observer/MonthlyLogger.class
 mx/unam/ciencias/myp/pumabank/patterns/decorator/PremiumAlertsDecorator.class
 mx/unam/ciencias/myp/pumabank/patterns/state/AccountState.class
 mx/unam/ciencias/myp/pumabank/patterns/decorator/AntiFraudDecorator.class
+mx/unam/ciencias/myp/pumabank/facade/PumaBankFacade.class
 mx/unam/ciencias/myp/pumabank/patterns/observer/Observer.class
 mx/unam/ciencias/myp/pumabank/patterns/state/states/OverdrawnState.class
 mx/unam/ciencias/myp/pumabank/patterns/decorator/RewardsProgramDecorator.class
+mx/unam/ciencias/myp/pumabank/patterns/strategy/periods/MonthlyInterest.class
 mx/unam/ciencias/myp/pumabank/model/Client.class
 mx/unam/ciencias/myp/pumabank/patterns/decorator/AccountDecorator.class
 mx/unam/ciencias/myp/pumabank/patterns/proxy/PinAuthenticator.class
@@ -17,3 +20,4 @@ mx/unam/ciencias/myp/pumabank/patterns/proxy/AccountProxy.class
 mx/unam/ciencias/myp/pumabank/patterns/state/states/FrozenState.class
 mx/unam/ciencias/myp/pumabank/model/IAccount.class
 mx/unam/ciencias/myp/pumabank/patterns/state/states/ActiveState.class
+mx/unam/ciencias/myp/pumabank/patterns/strategy/periods/PremiumInterest.class

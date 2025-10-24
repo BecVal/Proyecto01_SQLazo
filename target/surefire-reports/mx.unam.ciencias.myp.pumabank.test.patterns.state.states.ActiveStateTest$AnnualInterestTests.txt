@@ -1,0 +1,30 @@
+-------------------------------------------------------------------------------
+Test set: mx.unam.ciencias.myp.pumabank.test.patterns.state.states.ActiveStateTest$AnnualInterestTests
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.003 s <<< FAILURE! -- in mx.unam.ciencias.myp.pumabank.test.patterns.state.states.ActiveStateTest$AnnualInterestTests
+mx.unam.ciencias.myp.pumabank.test.patterns.state.states.ActiveStateTest$AnnualInterestTests.annualNonPayoutMonths -- Time elapsed: 0.002 s <<< ERROR!
+java.lang.NullPointerException
+	at java.base/java.util.Objects.requireNonNull(Objects.java:220)
+	at mx.unam.ciencias.myp.pumabank.model.Account.<init>(Account.java:49)
+	at mx.unam.ciencias.myp.pumabank.model.Account.<init>(Account.java:224)
+	at mx.unam.ciencias.myp.pumabank.test.patterns.state.states.ActiveStateTest$FakeAccount.<init>(ActiveStateTest.java:22)
+	at mx.unam.ciencias.myp.pumabank.test.patterns.state.states.ActiveStateTest$AccountHarness.<init>(ActiveStateTest.java:34)
+	at mx.unam.ciencias.myp.pumabank.test.patterns.state.states.ActiveStateTest$AnnualInterestTests.annualNonPayoutMonths(ActiveStateTest.java:84)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+
+mx.unam.ciencias.myp.pumabank.test.patterns.state.states.ActiveStateTest$AnnualInterestTests.annualPayoutMonth -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.NullPointerException
+	at java.base/java.util.Objects.requireNonNull(Objects.java:220)
+	at mx.unam.ciencias.myp.pumabank.model.Account.<init>(Account.java:49)
+	at mx.unam.ciencias.myp.pumabank.model.Account.<init>(Account.java:224)
+	at mx.unam.ciencias.myp.pumabank.test.patterns.state.states.ActiveStateTest$FakeAccount.<init>(ActiveStateTest.java:22)
+	at mx.unam.ciencias.myp.pumabank.test.patterns.state.states.ActiveStateTest$AccountHarness.<init>(ActiveStateTest.java:34)
+	at mx.unam.ciencias.myp.pumabank.test.patterns.state.states.ActiveStateTest$AnnualInterestTests.annualPayoutMonth(ActiveStateTest.java:88)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+

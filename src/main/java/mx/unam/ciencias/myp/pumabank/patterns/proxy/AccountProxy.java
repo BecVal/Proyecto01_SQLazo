@@ -47,7 +47,7 @@ public class AccountProxy implements IAccount {
             realAccount.deposit(amount, pin);
         } else {
             System.err.println("[ACCESS DENIED] Incorrect PIN. Deposit not completed.");
-            realAccount.notify("Failed deposit attempt due to incorrect PIN.");
+            realAccount.notify("[PROXY] Failed deposit attempt due to incorrect PIN.");
         }
     }
 
@@ -67,7 +67,7 @@ public class AccountProxy implements IAccount {
             realAccount.withdraw(amount, pin);
         } else {
             System.err.println("[ACCESS DENIED] Incorrect PIN. Withdrawal not completed.");
-            realAccount.notify("Failed withdrawal attempt due to incorrect PIN.");
+            realAccount.notify("[PROXY] Failed withdrawal attempt due to incorrect PIN.");
         }
     }
 
@@ -88,7 +88,7 @@ public class AccountProxy implements IAccount {
             return realAccount.checkBalance(pin);
         } else {
             System.err.println("[ACCESS DENIED] Incorrect PIN. Balance check not completed.");
-            realAccount.notify("Failed balance check attempt due to incorrect PIN.");
+            realAccount.notify("[PROXY] Failed balance check attempt due to incorrect PIN.");
             return -1;
         }
     }
@@ -100,5 +100,70 @@ public class AccountProxy implements IAccount {
     @Override
     public void processMonth() {
         realAccount.processMonth();
+    }
+
+    /**
+     * Records a fee on the underlying account. This is exposed so decorators
+     * can invoke fee recording through the proxy without needing reflection.
+     *
+     * @param fee the fee amount to record
+     */
+    public void recordFee(double fee) {
+        try {
+            realAccount.recordFee(fee);
+        } catch (Exception e) {
+
+            System.err.println("[PROXY] Error recording fee on account: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Records an interest payment on the underlying account.
+     *
+     * @param interest the interest amount to record
+     */
+    public void recordInterest(double interest) {
+        try {
+            realAccount.recordInterest(interest);
+        } catch (Exception e) {
+            System.err.println("[PROXY] Error recording interest on account: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Adds an entry to the underlying account history.
+     * @param event the history event to add
+     */
+    public void addHistory(String event) {
+        try {
+            realAccount.addHistory(event);
+        } catch (Exception e) {
+            System.err.println("[PROXY] Error adding history to account: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Notifies observers registered on the underlying account.
+     * @param message the message to notify
+     */
+    public void notifyObservers(String message) {
+        try {
+            realAccount.notify(message);
+        } catch (Exception e) {
+            System.err.println("[PROXY] Error notifying observers: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Returns the underlying real {@link Account} instance.
+     * <p>
+     * This accessor avoids the need for reflection in higher-level code
+     * that needs to inspect or operate on the concrete account object.
+     * </p>
+     *
+     * @return the wrapped {@link Account}
+     */
+    public Account getUnderlyingAccount() {
+        return realAccount;
     }
 }

@@ -14,6 +14,7 @@ public class AntiFraudDecorator extends AccountDecorator{
      * Deposits the specified amount into the account and sends an anti-fraud alert.
      *
      * @param amount the amount to deposit
+     * @param pin    the PIN for authentication
      */
     @Override
     public void deposit(double amount, String pin) {
@@ -38,9 +39,17 @@ public class AntiFraudDecorator extends AccountDecorator{
      */
     @Override
     public void processMonth() {
-        super.withdraw(ANTI_FRAUD_FEE, "0000");
+        notify(String.format("SERVICE_FEE_PENDING: Anti-Fraud Protection - $%.2f", ANTI_FRAUD_FEE));
+        
+        super.withdraw(ANTI_FRAUD_FEE, "SYSTEM");
+        
+        recordFee(ANTI_FRAUD_FEE);
+        
         addHistory("Anti-fraud service fee applied: $" + ANTI_FRAUD_FEE);
+        
+        notify(String.format("SERVICE_FEE_APPLIED: Anti-Fraud Protection - $%.2f", ANTI_FRAUD_FEE));
         notify("Anti-fraud protection active. Monthly fee: $" + ANTI_FRAUD_FEE);
+        
         super.processMonth();
     }
 
@@ -53,7 +62,8 @@ public class AntiFraudDecorator extends AccountDecorator{
     private void validateTransaction(double amount, String operationType) {
         if (amount > 10000) {
             addHistory("Suspicious " + operationType + " detected: $" + amount);
-            notify("ALERT: Large " + operationType + " of $" + amount + " requires verification");
+            notify(String.format("FRAUD_ALERT: Large %s of $%.2f requires verification", 
+                operationType, amount));
         }
     }
 }

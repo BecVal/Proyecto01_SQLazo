@@ -21,4 +21,3 @@ public class PushNotifier implements Observer {
         System.out.println("Notification: " + event);
     }
 }
-

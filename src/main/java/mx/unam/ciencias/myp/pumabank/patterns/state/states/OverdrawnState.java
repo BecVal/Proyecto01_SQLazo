@@ -28,24 +28,33 @@ public class OverdrawnState implements AccountState {
 
     @Override
     public void deposit(double amount, Account account) {
-
+        double balanceBefore = account.getBalance();
         double bal = account.getBalance();
 
         if (!feeApplied) {
             bal -= OVERDRAFT_FEE;
             feeApplied = true;
             account.addHistory("Overdraft fee applied: $" + OVERDRAFT_FEE);
+        
+            account.notify(String.format("OVERDRAFT_FEE: $%.2f | Balance Before Fee: $%.2f | Balance After Fee: $%.2f", 
+                OVERDRAFT_FEE, balanceBefore, bal));
         }
 
         bal += amount;
         account.setBalance(bal);
         account.addHistory("Deposit while overdrawn: $" + amount + " | Balance: $" + bal);
 
+        account.notify(String.format("DEPOSIT_OVERDRAWN: $%.2f | Total Balance After: $%.2f", 
+            amount, bal));
+
+        
         if (bal >= 0) {
+            String previousState = "OverdrawnState";
             account.changeState(new ActiveState());
             account.addHistory("State changed -> ActiveState (balance recovered).");
-            account.notify("Account recovered from overdraft. Balance $" + account.getBalance());
-
+            
+            account.notify(String.format("STATE_CHANGE: %s -> ActiveState | Reason: Balance recovered to non-negative", 
+                previousState));
         } else {
             account.notify("Deposit received, account remains Overdrawn. Balance $" + bal);
         }
@@ -61,7 +70,8 @@ public class OverdrawnState implements AccountState {
     @Override
     public void withdraw(double amount, Account account) {
         account.addHistory("Withdrawal denied: account is overdrawn. Attempted: $" + amount);
-        account.notify("Operation blocked: withdrawal on overdrawn account.");
+        account.notify(String.format("WITHDRAWAL_DENIED: $%.2f | Reason: Account overdrawn | Current Balance: $%.2f", 
+            amount, account.getBalance()));
     }
 
     /**
@@ -74,6 +84,7 @@ public class OverdrawnState implements AccountState {
      */
     @Override
     public void processMonth(Account account) {
+        double balanceBefore = account.getBalance();
         double bal = account.getBalance();
 
         if (!feeApplied) {
@@ -81,34 +92,46 @@ public class OverdrawnState implements AccountState {
             feeApplied = true;
             account.setBalance(bal);
             account.addHistory("Month-end overdraft fee applied: $" + OVERDRAFT_FEE + " | Balance: $" + bal);
+            
+            account.recordFee(OVERDRAFT_FEE);
+
+            account.notify(String.format("MONTHLY_OVERDRAFT_FEE: $%.2f | Balance Before: $%.2f | Balance After: $%.2f", 
+                OVERDRAFT_FEE, balanceBefore, bal));
         }
 
         if (bal >= 0) {
-
             double interest = 0.0;
+            double interestBalanceBefore = account.getBalance();
 
             if (account.getInterestPolicy() != null) {
-
                 interest = account.getInterestPolicy().calculate(bal);
 
                 if (interest != 0.0) {
                     bal += interest;
                     account.setBalance(bal);
                     account.addHistory("Monthly interest applied: $" + interest + " | Balance: $" + bal);
-
+                    
+                    account.notify(String.format("INTEREST_APPLIED: $%.2f | Balance Before: $%.2f | Balance After: $%.2f", 
+                        interest, interestBalanceBefore, bal));
                 } else {
                     account.addHistory("Monthly processing: no interest applied.");
+                    account.notify("MONTHLY_PROCESSING: No interest applied");
                 }
             } else {
                 account.addHistory("Monthly processing: no interest policy configured.");
+                account.notify("MONTHLY_PROCESSING: No interest policy configured");
             }
 
+            String previousState = "OverdrawnState";
             account.changeState(new ActiveState());
             account.addHistory("State changed -> ActiveState.");
-            account.notify("Overdraft resolved at month-end. Balance $" + bal);
+            
+            account.notify(String.format("STATE_CHANGE: %s -> ActiveState | Reason: Month-end balance recovery", 
+                previousState));
         } else {
             account.addHistory("Monthly processing: account remains overdrawn. No interests applied.");
-            account.notify("Monthly summary: overdrawn. Balance $" + account.getBalance());
+            account.notify(String.format("MONTHLY_SUMMARY: Account remains overdrawn | Balance: $%.2f", 
+                account.getBalance()));
         }
     }
 
@@ -119,6 +142,6 @@ public class OverdrawnState implements AccountState {
     @Override
     public void unfreeze(Account account) {
         account.addHistory("Unfreeze operation denied: account is overdrawn.");
-        account.notify("Operation blocked: cannot unfreeze an overdrawn account.");
+        account.notify("UNFREEZE_DENIED: Cannot unfreeze an overdrawn account");
     }
 }
