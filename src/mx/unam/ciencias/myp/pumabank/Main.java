@@ -1,8 +1,8 @@
 package mx.unam.ciencias.myp.pumabank;
 
+import java.util.*;
 import mx.unam.ciencias.myp.pumabank.facade.PumaBankFacade;
 import mx.unam.ciencias.myp.pumabank.model.Client;
-import java.util.*;
 
 /**
  * Interactive CLI runner for PumaBank.
@@ -232,7 +232,7 @@ public class Main {
 
     private static String pickRandomPin() {
         Random r = new Random();
-        if (r.nextDouble() < 0.5) return "0000";
+        if (r.nextDouble() < 0.7) return "0000";
         return String.format("%04d", r.nextInt(10000));
     }
 }

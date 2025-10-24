@@ -33,8 +33,12 @@ public class RewardsProgramDecorator extends AccountDecorator {
      */
     @Override
     public void deposit(double amount, String pin) {
-        super.deposit(amount, pin);
-        addRewardPoints(amount);
+        try {
+            super.deposit(amount, pin);
+            addRewardPoints(amount);
+        } catch (Exception e) {
+            throw e; 
+        }
     }
 
     /**
@@ -45,8 +49,12 @@ public class RewardsProgramDecorator extends AccountDecorator {
      */
     @Override
     public void withdraw(double amount, String pin) {
-        super.withdraw(amount, pin);
-        addRewardPoints(amount);
+        try {
+            super.withdraw(amount, pin);
+            addRewardPoints(amount);
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     /**
