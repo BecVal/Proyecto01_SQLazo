@@ -1,9 +1,8 @@
 package mx.unam.ciencias.myp.pumabank.patterns.decorator;
 
+import java.lang.reflect.Method;
 import mx.unam.ciencias.myp.pumabank.model.IAccount;
 import mx.unam.ciencias.myp.pumabank.patterns.proxy.AccountProxy;
-
-import java.lang.reflect.Method;
 
 /**
  * Abstract decorator class for {@link IAccount} implementations.
@@ -135,5 +134,25 @@ public abstract class AccountDecorator implements IAccount {
         } catch (Exception e) {
             System.err.println("Could not record interest: " + e.getMessage());
         }
+    }
+
+    /**
+     * Retrieves the current balance of the underlying real {@link mx.unam.ciencias.myp.pumabank.model.Account} instance.
+     * This helper method allows decorators to inspect the actual balance without
+     * breaking encapsulation of the decorated object's public interface.
+     *
+     * @return the balance of the real account, or 0.0 if the underlying account cannot be determined.
+     */
+    protected double getUnderlyingAccountBalance() {
+        IAccount current = decoratedAccount;
+        while (current instanceof AccountDecorator) {
+            current = ((AccountDecorator) current).decoratedAccount;
+        }
+        if (current instanceof AccountProxy) {
+            return ((AccountProxy) current).getUnderlyingAccount().getBalance();
+        } else if (current instanceof mx.unam.ciencias.myp.pumabank.model.Account) {
+            return ((mx.unam.ciencias.myp.pumabank.model.Account) current).getBalance();
+        }
+        return 0.0;
     }
 }

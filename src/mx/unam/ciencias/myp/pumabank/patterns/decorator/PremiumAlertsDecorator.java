@@ -29,8 +29,11 @@ public class PremiumAlertsDecorator extends AccountDecorator {
      */
     @Override
     public void deposit(double amount, String pin) {
+        double balanceBefore = getUnderlyingAccountBalance();
         super.deposit(amount, pin);
-        notify(String.format("PREMIUM_ALERT: Deposit of $%.2f completed", amount));
+        if (getUnderlyingAccountBalance() > balanceBefore) {
+            notify(String.format("PREMIUM_ALERT: Deposit of $%.2f completed", amount));
+        }
     }
 
     /**
@@ -41,8 +44,11 @@ public class PremiumAlertsDecorator extends AccountDecorator {
      */
     @Override
     public void withdraw(double amount, String pin) {
+        double balanceBefore = getUnderlyingAccountBalance();
         super.withdraw(amount, pin);
-        notify(String.format("PREMIUM_ALERT: Withdrawal of $%.2f completed", amount));
+        if (getUnderlyingAccountBalance() < balanceBefore) {
+            notify(String.format("PREMIUM_ALERT: Withdrawal of $%.2f completed", amount));
+        }
     }
 
     /**
@@ -53,14 +59,19 @@ public class PremiumAlertsDecorator extends AccountDecorator {
 
         notify(String.format("SERVICE_FEE_PENDING: Premium Alerts - $%.2f", ALERTS_FEE));
         
-        super.withdraw(ALERTS_FEE, "SYSTEM");
+        double balanceBefore = getUnderlyingAccountBalance();
+        super.withdraw(ALERTS_FEE, "SYSTEM"); 
+        double balanceAfter = getUnderlyingAccountBalance();
 
-        recordFee(ALERTS_FEE);
-
-        addHistory("Premium alerts service fee applied: $" + ALERTS_FEE);
-        
-        notify(String.format("SERVICE_FEE_APPLIED: Premium Alerts - $%.2f", ALERTS_FEE));
-        notify("PREMIUM ALERT: Monthly service fee applied: $" + ALERTS_FEE);
+        if (balanceAfter < balanceBefore) { 
+            recordFee(ALERTS_FEE);
+            addHistory("Premium alerts service fee applied: $" + ALERTS_FEE);
+            notify(String.format("SERVICE_FEE_APPLIED: Premium Alerts - $%.2f", ALERTS_FEE));
+            notify("PREMIUM ALERT: Monthly service fee applied: $" + ALERTS_FEE);
+        } else {
+            addHistory("Premium alerts service fee could not be applied: $" + ALERTS_FEE + " (insufficient funds or overdrawn)");
+            notify(String.format("SERVICE_FEE_DENIED: Premium Alerts - $%.2f | Reason: Insufficient funds or overdrawn", ALERTS_FEE));
+        }
         
         super.processMonth();
     }
@@ -74,7 +85,9 @@ public class PremiumAlertsDecorator extends AccountDecorator {
     @Override
     public double checkBalance(String pin) {
         double balance = super.checkBalance(pin);
-        notify(String.format("PREMIUM_ALERT: Balance checked - $%.2f", balance));
+        if (balance != -1) { // Assuming -1 indicates a failed check from the proxy
+            notify(String.format("PREMIUM_ALERT: Balance checked - $%.2f", balance));
+        }
         return balance;
     }
 }

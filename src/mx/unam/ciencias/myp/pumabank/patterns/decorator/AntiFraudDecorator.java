@@ -18,8 +18,12 @@ public class AntiFraudDecorator extends AccountDecorator{
      */
     @Override
     public void deposit(double amount, String pin) {
+        double balanceBefore = getUnderlyingAccountBalance();
         validateTransaction(amount, "deposit");
         super.deposit(amount, pin);
+        double balanceAfter = getUnderlyingAccountBalance();
+        // Additional actions for the decorator would go here,
+        // conditional on (balanceAfter > balanceBefore).
     }
 
     /**
@@ -30,8 +34,12 @@ public class AntiFraudDecorator extends AccountDecorator{
      */
     @Override
     public void withdraw(double amount, String pin) {
+        double balanceBefore = getUnderlyingAccountBalance();
         validateTransaction(amount, "withdraw");
         super.withdraw(amount, pin);
+        double balanceAfter = getUnderlyingAccountBalance();
+        // Additional actions for the decorator would go here,
+        // conditional on (balanceAfter < balanceBefore).
     }
 
     /**
@@ -41,14 +49,19 @@ public class AntiFraudDecorator extends AccountDecorator{
     public void processMonth() {
         notify(String.format("SERVICE_FEE_PENDING: Anti-Fraud Protection - $%.2f", ANTI_FRAUD_FEE));
         
-        super.withdraw(ANTI_FRAUD_FEE, "SYSTEM");
-        
-        recordFee(ANTI_FRAUD_FEE);
-        
-        addHistory("Anti-fraud service fee applied: $" + ANTI_FRAUD_FEE);
-        
-        notify(String.format("SERVICE_FEE_APPLIED: Anti-Fraud Protection - $%.2f", ANTI_FRAUD_FEE));
-        notify("Anti-fraud protection active. Monthly fee: $" + ANTI_FRAUD_FEE);
+        double balanceBefore = getUnderlyingAccountBalance();
+        super.withdraw(ANTI_FRAUD_FEE, "SYSTEM"); // Attempt to withdraw fee
+        double balanceAfter = getUnderlyingAccountBalance();
+
+        if (balanceAfter < balanceBefore) { // Only record fee if withdrawal was successful
+            recordFee(ANTI_FRAUD_FEE);
+            addHistory("Anti-fraud service fee applied: $" + ANTI_FRAUD_FEE);
+            notify(String.format("SERVICE_FEE_APPLIED: Anti-Fraud Protection - $%.2f", ANTI_FRAUD_FEE));
+            notify("Anti-fraud protection active. Monthly fee: $" + ANTI_FRAUD_FEE);
+        } else {
+            addHistory("Anti-fraud service fee could not be applied: $" + ANTI_FRAUD_FEE + " (insufficient funds or overdrawn)");
+            notify(String.format("SERVICE_FEE_DENIED: Anti-Fraud Protection - $%.2f | Reason: Insufficient funds or overdrawn", ANTI_FRAUD_FEE));
+        }
         
         super.processMonth();
     }
