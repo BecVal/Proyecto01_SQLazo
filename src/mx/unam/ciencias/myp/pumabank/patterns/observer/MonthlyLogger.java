@@ -79,7 +79,7 @@ private static final String LOG_FILE = "monthly_operations_log.txt";
         try (PrintWriter writer = new PrintWriter(new OutputStreamWriter(
                 new FileOutputStream(LOG_FILE, true), StandardCharsets.UTF_8))) {
             writer.println(logEntry);
-            writer.println("[MONTHLY_SUMMARY] " + "=".repeat(80));
+            writer.println("[MONTHLY_SUMMARY] " + new String(new char[80]).replace('\0', '='));
             writer.flush();
         } catch (IOException e) {
             System.err.println("Error writing monthly summary: " + e.getMessage());
@@ -151,42 +151,19 @@ private static final String LOG_FILE = "monthly_operations_log.txt";
 
     /**
      * Creates a monthly report header.
+     * @param month The month number for the report.
+     * @param includeTimestamp Whether to include the real timestamp.
      */
-    public void startMonthlyReport() {
-        startMonthlyReport(true);
-    }
-
-    /**
-     * Starts the monthly report header. When {@code includeTimestamp} is false,
-     * the header will not include the system date/time. This is useful for
-     * deterministic simulations where external timestamps are undesired.
-     *
-     * @param includeTimestamp whether to include the current system timestamp in the header
-     */
-    public void startMonthlyReport(boolean includeTimestamp) {
-        startMonthlyReport(0, includeTimestamp);
-    }
-
-    /**
-     * Starts the monthly report header for a specific simulated month.
-     *
-     * @param simulatedMonth the simulated month number (1..12). If 0, month is unspecified.
-     * @param includeTimestamp whether to include the current system timestamp in the header
-     */
-    public void startMonthlyReport(int simulatedMonth, boolean includeTimestamp) {
-        String timestamp = LocalDateTime.now().format(TIMESTAMP_FORMATTER);
+    public void startMonthlyReport(int month, boolean includeTimestamp) {
+        String dateLine = includeTimestamp ? 
+            "Report Date: " + LocalDateTime.now().format(TIMESTAMP_FORMATTER) :
+            "Simulated Month: " + month;
         try (PrintWriter writer = new PrintWriter(new OutputStreamWriter(
                 new FileOutputStream(LOG_FILE, true), StandardCharsets.UTF_8))) {
-            writer.println("=".repeat(100));
-            writer.println("PUMA BANK - MONTHLY OPERATIONS REPORT");
-            if (simulatedMonth > 0) {
-                writer.println("Simulated Month: " + simulatedMonth);
-            }
-           
-            if (includeTimestamp) {
-                writer.println("Report Date: " + timestamp);
-            }
-            writer.println("=".repeat(100));
+            writer.println(new String(new char[100]).replace('\0', '='));
+            writer.println("PUMA BANK - MONTHLY OPERATIONS REPORT - MONTH " + month);
+            writer.println(dateLine);
+            writer.println(new String(new char[100]).replace('\0', '='));
             writer.flush();
         } catch (IOException e) {
             System.err.println("Error writing report header: " + e.getMessage());
@@ -195,47 +172,27 @@ private static final String LOG_FILE = "monthly_operations_log.txt";
 
     /**
      * Creates a monthly report footer with summary.
+     * @param totalAccounts Total accounts processed.
+     * @param transactionsProcessed Total transactions in the month.
+     * @param totalFees Total fees collected.
+     * @param totalInterest Total interest paid.
+     * @param includeTimestamp Whether to include the real timestamp.
+     * @param month The month number for the report summary.
      */
-    public void endMonthlyReport(int totalAccounts, int transactionsProcessed, double totalFees, double totalInterest) {
-        endMonthlyReport(totalAccounts, transactionsProcessed, totalFees, totalInterest, true);
-    }
-
-    /**
-     * Writes the monthly report footer. When {@code includeTimestamp} is false,
-     * the generated timestamp line will include a simulation marker instead of the system date.
-     */
-    public void endMonthlyReport(int totalAccounts, int transactionsProcessed, double totalFees, double totalInterest, boolean includeTimestamp) {
-        endMonthlyReport(totalAccounts, transactionsProcessed, totalFees, totalInterest, includeTimestamp, 0);
-    }
-
-    /**
-     * Writes the monthly report footer for a specific simulated month.
-     *
-     * @param totalAccounts number of accounts processed
-     * @param transactionsProcessed total transactions processed
-     * @param totalFees total fees collected
-     * @param totalInterest total interest paid
-     * @param includeTimestamp whether to include system timestamp
-     * @param simulatedMonth the simulated month number (1..12). If 0, month is unspecified.
-     */
-    public void endMonthlyReport(int totalAccounts, int transactionsProcessed, double totalFees, double totalInterest, boolean includeTimestamp, int simulatedMonth) {
-        String timestamp = LocalDateTime.now().format(TIMESTAMP_FORMATTER);
+    public void endMonthlyReport(int totalAccounts, int transactionsProcessed, double totalFees, double totalInterest, boolean includeTimestamp, int month) {
+        String generatedLine = includeTimestamp ?
+            "Generated: " + LocalDateTime.now().format(TIMESTAMP_FORMATTER) :
+            "Summary for Simulated Month: " + month;
         try (PrintWriter writer = new PrintWriter(new OutputStreamWriter(
                 new FileOutputStream(LOG_FILE, true), StandardCharsets.UTF_8))) {
-            writer.println("=".repeat(100));
+            writer.println(new String(new char[100]).replace('\0', '='));
             writer.println("MONTHLY REPORT SUMMARY");
-            if (simulatedMonth > 0) {
-                writer.println("Simulated Month: " + simulatedMonth);
-            }
-
-            if (includeTimestamp) {
-                writer.println("Generated: " + timestamp);
-            }
+            writer.println(generatedLine);
             writer.printf("Total Accounts Processed: %d%n", totalAccounts);
             writer.printf("Total Transactions: %d%n", transactionsProcessed);
             writer.printf("Total Fees Collected: $%.2f%n", totalFees);
             writer.printf("Total Interest Paid: $%.2f%n", totalInterest);
-            writer.println("=".repeat(100));
+            writer.println(new String(new char[100]).replace('\0', '='));
             writer.flush();
         } catch (IOException e) {
             System.err.println("Error writing report footer: " + e.getMessage());

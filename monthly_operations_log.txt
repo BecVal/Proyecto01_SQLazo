@@ -1,0 +1,898 @@
+[2025-10-23 19:10:13] [SYSTEM] SYSTEM_START - PumaBank system initialized
+[2025-10-23 19:10:18] [SYSTEM] CLIENT_REGISTERED - Client: d (ID: CL001)
+[2025-10-23 19:10:20] [SYSTEM] ACCOUNT_CREATED - Account: CL001-ACC-1 | Client: d | Balance: $14697.31 | Interest: ANNUAL | Services: REWARDS
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $123.77
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 1 points from transaction of $123.77 | Total: 1 points
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $791.73
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 7 points from transaction of $791.73 | Total: 8 points
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $394.96
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 3 points from transaction of $394.96 | Total: 11 points
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $67.53
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $57.52
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $1747.14
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 17 points from transaction of $1747.14 | Total: 28 points
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $85.86
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $13.93
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $90.11
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+====================================================================================================
+PUMA BANK - MONTHLY OPERATIONS REPORT - MONTH 1
+Simulated Month: 1
+====================================================================================================
+[2025-10-23 19:10:24] [SYSTEM] MONTHLY_PROCESSING_START - Starting monthly operations for 1 accounts
+[2025-10-23 19:10:24] [SYSTEM] ACCOUNT_PROCESSING_START - Processing account: CL001-ACC-1
+[2025-10-23 19:10:24] SERVICE_FEE_PENDING: Rewards Program - $30.00 | Current Points: 28
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] FEE_RECORDED - Fee: $30.00 | Total Fees: $30.00
+[2025-10-23 19:10:24] SERVICE_FEE_APPLIED: Rewards Program - $30.00 | Points Balance: 28
+[2025-10-23 19:10:24] Rewards program: Monthly fee applied. Current points: 28
+[2025-10-23 19:10:24] MONTHLY_PROCESSING: No interest applied to active account
+[2025-10-23 19:10:24] MONTHLY_SUMMARY: Active account processed
+[2025-10-23 19:10:24] [SYSTEM] ACCOUNT_PROCESSING_END - Completed processing account: CL001-ACC-1
+[2025-10-23 19:10:24] [SYSTEM] MONTHLY_PROCESSING_END - Completed monthly operations. Transactions: 1
+====================================================================================================
+MONTHLY REPORT SUMMARY
+Summary for Simulated Month: 1
+Total Accounts Processed: 1
+Total Transactions: 1
+Total Fees Collected: $30.00
+Total Interest Paid: $0.00
+====================================================================================================
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $1392.50
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 13 points from transaction of $1392.50 | Total: 41 points
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $2.47
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $501.50
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 5 points from transaction of $501.50 | Total: 46 points
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $954.42
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 9 points from transaction of $954.42 | Total: 55 points
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $1106.92
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 11 points from transaction of $1106.92 | Total: 66 points
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1187.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 11 points from transaction of $1187.00 | Total: 77 points
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $584.82
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 5 points from transaction of $584.82 | Total: 82 points
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $139.85
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 1 points from transaction of $139.85 | Total: 83 points
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $1792.02
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 17 points from transaction of $1792.02 | Total: 100 points
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $189.34
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 1 points from transaction of $189.34 | Total: 101 points
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $40.68
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $374.84
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 3 points from transaction of $374.84 | Total: 104 points
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $1210.86
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 12 points from transaction of $1210.86 | Total: 116 points
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $43.99
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $1360.89
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 13 points from transaction of $1360.89 | Total: 129 points
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1696.45
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 16 points from transaction of $1696.45 | Total: 145 points
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $62.23
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $811.19
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 8 points from transaction of $811.19 | Total: 153 points
+====================================================================================================
+PUMA BANK - MONTHLY OPERATIONS REPORT - MONTH 2
+Simulated Month: 2
+====================================================================================================
+[2025-10-23 19:10:24] [SYSTEM] MONTHLY_PROCESSING_START - Starting monthly operations for 1 accounts
+[2025-10-23 19:10:24] [SYSTEM] ACCOUNT_PROCESSING_START - Processing account: CL001-ACC-1
+[2025-10-23 19:10:24] SERVICE_FEE_PENDING: Rewards Program - $30.00 | Current Points: 153
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] FEE_RECORDED - Fee: $30.00 | Total Fees: $30.00
+[2025-10-23 19:10:24] SERVICE_FEE_APPLIED: Rewards Program - $30.00 | Points Balance: 153
+[2025-10-23 19:10:24] Rewards program: Monthly fee applied. Current points: 153
+[2025-10-23 19:10:24] MONTHLY_PROCESSING: No interest applied to active account
+[2025-10-23 19:10:24] MONTHLY_SUMMARY: Active account processed
+[2025-10-23 19:10:24] [SYSTEM] ACCOUNT_PROCESSING_END - Completed processing account: CL001-ACC-1
+[2025-10-23 19:10:24] [SYSTEM] MONTHLY_PROCESSING_END - Completed monthly operations. Transactions: 1
+====================================================================================================
+MONTHLY REPORT SUMMARY
+Summary for Simulated Month: 2
+Total Accounts Processed: 1
+Total Transactions: 1
+Total Fees Collected: $30.00
+Total Interest Paid: $0.00
+====================================================================================================
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $1281.21
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 12 points from transaction of $1281.21 | Total: 165 points
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $335.95
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 3 points from transaction of $335.95 | Total: 168 points
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1703.46
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 17 points from transaction of $1703.46 | Total: 185 points
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $1463.19
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 14 points from transaction of $1463.19 | Total: 199 points
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $59.93
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1175.68
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 11 points from transaction of $1175.68 | Total: 210 points
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $60.25
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $1939.39
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 19 points from transaction of $1939.39 | Total: 229 points
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $41.73
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $177.15
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 1 points from transaction of $177.15 | Total: 230 points
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $84.53
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $42.47
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $31.77
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1550.29
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 15 points from transaction of $1550.29 | Total: 245 points
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $94.77
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $180.18
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 1 points from transaction of $180.18 | Total: 246 points
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $1781.87
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 17 points from transaction of $1781.87 | Total: 263 points
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $80.32
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $486.69
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 4 points from transaction of $486.69 | Total: 267 points
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $932.11
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 9 points from transaction of $932.11 | Total: 276 points
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1410.92
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 14 points from transaction of $1410.92 | Total: 290 points
+====================================================================================================
+PUMA BANK - MONTHLY OPERATIONS REPORT - MONTH 3
+Simulated Month: 3
+====================================================================================================
+[2025-10-23 19:10:24] [SYSTEM] MONTHLY_PROCESSING_START - Starting monthly operations for 1 accounts
+[2025-10-23 19:10:24] [SYSTEM] ACCOUNT_PROCESSING_START - Processing account: CL001-ACC-1
+[2025-10-23 19:10:24] SERVICE_FEE_PENDING: Rewards Program - $30.00 | Current Points: 290
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] FEE_RECORDED - Fee: $30.00 | Total Fees: $30.00
+[2025-10-23 19:10:24] SERVICE_FEE_APPLIED: Rewards Program - $30.00 | Points Balance: 290
+[2025-10-23 19:10:24] Rewards program: Monthly fee applied. Current points: 290
+[2025-10-23 19:10:24] MONTHLY_PROCESSING: No interest applied to active account
+[2025-10-23 19:10:24] MONTHLY_SUMMARY: Active account processed
+[2025-10-23 19:10:24] [SYSTEM] ACCOUNT_PROCESSING_END - Completed processing account: CL001-ACC-1
+[2025-10-23 19:10:24] [SYSTEM] MONTHLY_PROCESSING_END - Completed monthly operations. Transactions: 1
+====================================================================================================
+MONTHLY REPORT SUMMARY
+Summary for Simulated Month: 3
+Total Accounts Processed: 1
+Total Transactions: 1
+Total Fees Collected: $30.00
+Total Interest Paid: $0.00
+====================================================================================================
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $436.66
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 4 points from transaction of $436.66 | Total: 294 points
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $44.77
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $36.54
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $39.49
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $120.21
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 1 points from transaction of $120.21 | Total: 295 points
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $1342.10
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 13 points from transaction of $1342.10 | Total: 308 points
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $1773.78
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 17 points from transaction of $1773.78 | Total: 325 points
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $804.96
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 8 points from transaction of $804.96 | Total: 333 points
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $36.33
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $46.19
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $570.73
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 5 points from transaction of $570.73 | Total: 338 points
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $44.11
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1475.07
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 14 points from transaction of $1475.07 | Total: 352 points
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $780.75
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 7 points from transaction of $780.75 | Total: 359 points
+====================================================================================================
+PUMA BANK - MONTHLY OPERATIONS REPORT - MONTH 4
+Simulated Month: 4
+====================================================================================================
+[2025-10-23 19:10:24] [SYSTEM] MONTHLY_PROCESSING_START - Starting monthly operations for 1 accounts
+[2025-10-23 19:10:24] [SYSTEM] ACCOUNT_PROCESSING_START - Processing account: CL001-ACC-1
+[2025-10-23 19:10:24] SERVICE_FEE_PENDING: Rewards Program - $30.00 | Current Points: 359
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] FEE_RECORDED - Fee: $30.00 | Total Fees: $30.00
+[2025-10-23 19:10:24] SERVICE_FEE_APPLIED: Rewards Program - $30.00 | Points Balance: 359
+[2025-10-23 19:10:24] Rewards program: Monthly fee applied. Current points: 359
+[2025-10-23 19:10:24] MONTHLY_PROCESSING: No interest applied to active account
+[2025-10-23 19:10:24] MONTHLY_SUMMARY: Active account processed
+[2025-10-23 19:10:24] [SYSTEM] ACCOUNT_PROCESSING_END - Completed processing account: CL001-ACC-1
+[2025-10-23 19:10:24] [SYSTEM] MONTHLY_PROCESSING_END - Completed monthly operations. Transactions: 1
+====================================================================================================
+MONTHLY REPORT SUMMARY
+Summary for Simulated Month: 4
+Total Accounts Processed: 1
+Total Transactions: 1
+Total Fees Collected: $30.00
+Total Interest Paid: $0.00
+====================================================================================================
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $57.64
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $52.79
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $19.82
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1757.41
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 17 points from transaction of $1757.41 | Total: 376 points
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $1419.48
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 14 points from transaction of $1419.48 | Total: 390 points
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $9.62
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $1158.87
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 11 points from transaction of $1158.87 | Total: 401 points
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1973.18
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 19 points from transaction of $1973.18 | Total: 420 points
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $822.35
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 8 points from transaction of $822.35 | Total: 428 points
+====================================================================================================
+PUMA BANK - MONTHLY OPERATIONS REPORT - MONTH 5
+Simulated Month: 5
+====================================================================================================
+[2025-10-23 19:10:24] [SYSTEM] MONTHLY_PROCESSING_START - Starting monthly operations for 1 accounts
+[2025-10-23 19:10:24] [SYSTEM] ACCOUNT_PROCESSING_START - Processing account: CL001-ACC-1
+[2025-10-23 19:10:24] SERVICE_FEE_PENDING: Rewards Program - $30.00 | Current Points: 428
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] FEE_RECORDED - Fee: $30.00 | Total Fees: $30.00
+[2025-10-23 19:10:24] SERVICE_FEE_APPLIED: Rewards Program - $30.00 | Points Balance: 428
+[2025-10-23 19:10:24] Rewards program: Monthly fee applied. Current points: 428
+[2025-10-23 19:10:24] MONTHLY_PROCESSING: No interest applied to active account
+[2025-10-23 19:10:24] MONTHLY_SUMMARY: Active account processed
+[2025-10-23 19:10:24] [SYSTEM] ACCOUNT_PROCESSING_END - Completed processing account: CL001-ACC-1
+[2025-10-23 19:10:24] [SYSTEM] MONTHLY_PROCESSING_END - Completed monthly operations. Transactions: 1
+====================================================================================================
+MONTHLY REPORT SUMMARY
+Summary for Simulated Month: 5
+Total Accounts Processed: 1
+Total Transactions: 1
+Total Fees Collected: $30.00
+Total Interest Paid: $0.00
+====================================================================================================
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $1056.68
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 10 points from transaction of $1056.68 | Total: 438 points
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $859.22
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 8 points from transaction of $859.22 | Total: 446 points
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $243.96
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 2 points from transaction of $243.96 | Total: 448 points
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $1149.12
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 11 points from transaction of $1149.12 | Total: 459 points
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $902.20
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 9 points from transaction of $902.20 | Total: 468 points
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $345.06
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 3 points from transaction of $345.06 | Total: 471 points
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $1474.86
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 14 points from transaction of $1474.86 | Total: 485 points
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $92.95
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $19.34
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1011.38
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 10 points from transaction of $1011.38 | Total: 495 points
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1148.71
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 11 points from transaction of $1148.71 | Total: 506 points
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $1402.33
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 14 points from transaction of $1402.33 | Total: 520 points
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $18.02
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+====================================================================================================
+PUMA BANK - MONTHLY OPERATIONS REPORT - MONTH 6
+Simulated Month: 6
+====================================================================================================
+[2025-10-23 19:10:24] [SYSTEM] MONTHLY_PROCESSING_START - Starting monthly operations for 1 accounts
+[2025-10-23 19:10:24] [SYSTEM] ACCOUNT_PROCESSING_START - Processing account: CL001-ACC-1
+[2025-10-23 19:10:24] SERVICE_FEE_PENDING: Rewards Program - $30.00 | Current Points: 520
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] FEE_RECORDED - Fee: $30.00 | Total Fees: $30.00
+[2025-10-23 19:10:24] SERVICE_FEE_APPLIED: Rewards Program - $30.00 | Points Balance: 520
+[2025-10-23 19:10:24] Rewards program: Monthly fee applied. Current points: 520
+[2025-10-23 19:10:24] MONTHLY_PROCESSING: No interest applied to active account
+[2025-10-23 19:10:24] MONTHLY_SUMMARY: Active account processed
+[2025-10-23 19:10:24] [SYSTEM] ACCOUNT_PROCESSING_END - Completed processing account: CL001-ACC-1
+[2025-10-23 19:10:24] [SYSTEM] MONTHLY_PROCESSING_END - Completed monthly operations. Transactions: 1
+====================================================================================================
+MONTHLY REPORT SUMMARY
+Summary for Simulated Month: 6
+Total Accounts Processed: 1
+Total Transactions: 1
+Total Fees Collected: $30.00
+Total Interest Paid: $0.00
+====================================================================================================
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1906.38
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 19 points from transaction of $1906.38 | Total: 539 points
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $59.93
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $50.95
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $1768.98
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 17 points from transaction of $1768.98 | Total: 556 points
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $70.49
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $83.41
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $12.42
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $15.13
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $77.97
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $868.69
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 8 points from transaction of $868.69 | Total: 564 points
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $348.60
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 3 points from transaction of $348.60 | Total: 567 points
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $90.72
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $1294.97
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 12 points from transaction of $1294.97 | Total: 579 points
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $77.54
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $19.12
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+====================================================================================================
+PUMA BANK - MONTHLY OPERATIONS REPORT - MONTH 7
+Simulated Month: 7
+====================================================================================================
+[2025-10-23 19:10:24] [SYSTEM] MONTHLY_PROCESSING_START - Starting monthly operations for 1 accounts
+[2025-10-23 19:10:24] [SYSTEM] ACCOUNT_PROCESSING_START - Processing account: CL001-ACC-1
+[2025-10-23 19:10:24] SERVICE_FEE_PENDING: Rewards Program - $30.00 | Current Points: 579
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] FEE_RECORDED - Fee: $30.00 | Total Fees: $30.00
+[2025-10-23 19:10:24] SERVICE_FEE_APPLIED: Rewards Program - $30.00 | Points Balance: 579
+[2025-10-23 19:10:24] Rewards program: Monthly fee applied. Current points: 579
+[2025-10-23 19:10:24] MONTHLY_PROCESSING: No interest applied to active account
+[2025-10-23 19:10:24] MONTHLY_SUMMARY: Active account processed
+[2025-10-23 19:10:24] [SYSTEM] ACCOUNT_PROCESSING_END - Completed processing account: CL001-ACC-1
+[2025-10-23 19:10:24] [SYSTEM] MONTHLY_PROCESSING_END - Completed monthly operations. Transactions: 1
+====================================================================================================
+MONTHLY REPORT SUMMARY
+Summary for Simulated Month: 7
+Total Accounts Processed: 1
+Total Transactions: 1
+Total Fees Collected: $30.00
+Total Interest Paid: $0.00
+====================================================================================================
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1691.68
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 16 points from transaction of $1691.68 | Total: 595 points
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $382.62
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 3 points from transaction of $382.62 | Total: 598 points
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1863.61
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 18 points from transaction of $1863.61 | Total: 616 points
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $9.58
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $77.25
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $93.41
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $1461.72
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 14 points from transaction of $1461.72 | Total: 630 points
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1205.87
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 12 points from transaction of $1205.87 | Total: 642 points
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $950.60
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 9 points from transaction of $950.60 | Total: 651 points
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $120.67
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 1 points from transaction of $120.67 | Total: 652 points
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1957.75
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 19 points from transaction of $1957.75 | Total: 671 points
+====================================================================================================
+PUMA BANK - MONTHLY OPERATIONS REPORT - MONTH 8
+Simulated Month: 8
+====================================================================================================
+[2025-10-23 19:10:24] [SYSTEM] MONTHLY_PROCESSING_START - Starting monthly operations for 1 accounts
+[2025-10-23 19:10:24] [SYSTEM] ACCOUNT_PROCESSING_START - Processing account: CL001-ACC-1
+[2025-10-23 19:10:24] SERVICE_FEE_PENDING: Rewards Program - $30.00 | Current Points: 671
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] FEE_RECORDED - Fee: $30.00 | Total Fees: $30.00
+[2025-10-23 19:10:24] SERVICE_FEE_APPLIED: Rewards Program - $30.00 | Points Balance: 671
+[2025-10-23 19:10:24] Rewards program: Monthly fee applied. Current points: 671
+[2025-10-23 19:10:24] MONTHLY_PROCESSING: No interest applied to active account
+[2025-10-23 19:10:24] MONTHLY_SUMMARY: Active account processed
+[2025-10-23 19:10:24] [SYSTEM] ACCOUNT_PROCESSING_END - Completed processing account: CL001-ACC-1
+[2025-10-23 19:10:24] [SYSTEM] MONTHLY_PROCESSING_END - Completed monthly operations. Transactions: 1
+====================================================================================================
+MONTHLY REPORT SUMMARY
+Summary for Simulated Month: 8
+Total Accounts Processed: 1
+Total Transactions: 1
+Total Fees Collected: $30.00
+Total Interest Paid: $0.00
+====================================================================================================
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1008.23
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 10 points from transaction of $1008.23 | Total: 681 points
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $54.50
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $150.14
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 1 points from transaction of $150.14 | Total: 682 points
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $897.72
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 8 points from transaction of $897.72 | Total: 690 points
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $1608.61
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 16 points from transaction of $1608.61 | Total: 706 points
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1527.71
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 15 points from transaction of $1527.71 | Total: 721 points
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1708.19
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 17 points from transaction of $1708.19 | Total: 738 points
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $930.64
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 9 points from transaction of $930.64 | Total: 747 points
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+====================================================================================================
+PUMA BANK - MONTHLY OPERATIONS REPORT - MONTH 9
+Simulated Month: 9
+====================================================================================================
+[2025-10-23 19:10:24] [SYSTEM] MONTHLY_PROCESSING_START - Starting monthly operations for 1 accounts
+[2025-10-23 19:10:24] [SYSTEM] ACCOUNT_PROCESSING_START - Processing account: CL001-ACC-1
+[2025-10-23 19:10:24] SERVICE_FEE_PENDING: Rewards Program - $30.00 | Current Points: 747
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] FEE_RECORDED - Fee: $30.00 | Total Fees: $30.00
+[2025-10-23 19:10:24] SERVICE_FEE_APPLIED: Rewards Program - $30.00 | Points Balance: 747
+[2025-10-23 19:10:24] Rewards program: Monthly fee applied. Current points: 747
+[2025-10-23 19:10:24] MONTHLY_PROCESSING: No interest applied to active account
+[2025-10-23 19:10:24] MONTHLY_SUMMARY: Active account processed
+[2025-10-23 19:10:24] [SYSTEM] ACCOUNT_PROCESSING_END - Completed processing account: CL001-ACC-1
+[2025-10-23 19:10:24] [SYSTEM] MONTHLY_PROCESSING_END - Completed monthly operations. Transactions: 1
+====================================================================================================
+MONTHLY REPORT SUMMARY
+Summary for Simulated Month: 9
+Total Accounts Processed: 1
+Total Transactions: 1
+Total Fees Collected: $30.00
+Total Interest Paid: $0.00
+====================================================================================================
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $1445.31
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 14 points from transaction of $1445.31 | Total: 761 points
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1450.83
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 14 points from transaction of $1450.83 | Total: 775 points
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $397.54
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 3 points from transaction of $397.54 | Total: 778 points
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $844.93
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 8 points from transaction of $844.93 | Total: 786 points
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $486.16
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 4 points from transaction of $486.16 | Total: 790 points
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $19.04
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $1067.16
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 10 points from transaction of $1067.16 | Total: 800 points
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $20.67
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1607.78
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 16 points from transaction of $1607.78 | Total: 816 points
+====================================================================================================
+PUMA BANK - MONTHLY OPERATIONS REPORT - MONTH 10
+Simulated Month: 10
+====================================================================================================
+[2025-10-23 19:10:24] [SYSTEM] MONTHLY_PROCESSING_START - Starting monthly operations for 1 accounts
+[2025-10-23 19:10:24] [SYSTEM] ACCOUNT_PROCESSING_START - Processing account: CL001-ACC-1
+[2025-10-23 19:10:24] SERVICE_FEE_PENDING: Rewards Program - $30.00 | Current Points: 816
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] FEE_RECORDED - Fee: $30.00 | Total Fees: $30.00
+[2025-10-23 19:10:24] SERVICE_FEE_APPLIED: Rewards Program - $30.00 | Points Balance: 816
+[2025-10-23 19:10:24] Rewards program: Monthly fee applied. Current points: 816
+[2025-10-23 19:10:24] MONTHLY_PROCESSING: No interest applied to active account
+[2025-10-23 19:10:24] MONTHLY_SUMMARY: Active account processed
+[2025-10-23 19:10:24] [SYSTEM] ACCOUNT_PROCESSING_END - Completed processing account: CL001-ACC-1
+[2025-10-23 19:10:24] [SYSTEM] MONTHLY_PROCESSING_END - Completed monthly operations. Transactions: 1
+====================================================================================================
+MONTHLY REPORT SUMMARY
+Summary for Simulated Month: 10
+Total Accounts Processed: 1
+Total Transactions: 1
+Total Fees Collected: $30.00
+Total Interest Paid: $0.00
+====================================================================================================
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $58.80
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1854.32
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 18 points from transaction of $1854.32 | Total: 834 points
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $634.07
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 6 points from transaction of $634.07 | Total: 840 points
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $1197.76
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 11 points from transaction of $1197.76 | Total: 851 points
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $744.75
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 7 points from transaction of $744.75 | Total: 858 points
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $1769.46
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 17 points from transaction of $1769.46 | Total: 875 points
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $71.35
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+====================================================================================================
+PUMA BANK - MONTHLY OPERATIONS REPORT - MONTH 11
+Simulated Month: 11
+====================================================================================================
+[2025-10-23 19:10:24] [SYSTEM] MONTHLY_PROCESSING_START - Starting monthly operations for 1 accounts
+[2025-10-23 19:10:24] [SYSTEM] ACCOUNT_PROCESSING_START - Processing account: CL001-ACC-1
+[2025-10-23 19:10:24] SERVICE_FEE_PENDING: Rewards Program - $30.00 | Current Points: 875
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] FEE_RECORDED - Fee: $30.00 | Total Fees: $30.00
+[2025-10-23 19:10:24] SERVICE_FEE_APPLIED: Rewards Program - $30.00 | Points Balance: 875
+[2025-10-23 19:10:24] Rewards program: Monthly fee applied. Current points: 875
+[2025-10-23 19:10:24] MONTHLY_PROCESSING: No interest applied to active account
+[2025-10-23 19:10:24] MONTHLY_SUMMARY: Active account processed
+[2025-10-23 19:10:24] [SYSTEM] ACCOUNT_PROCESSING_END - Completed processing account: CL001-ACC-1
+[2025-10-23 19:10:24] [SYSTEM] MONTHLY_PROCESSING_END - Completed monthly operations. Transactions: 1
+====================================================================================================
+MONTHLY REPORT SUMMARY
+Summary for Simulated Month: 11
+Total Accounts Processed: 1
+Total Transactions: 1
+Total Fees Collected: $30.00
+Total Interest Paid: $0.00
+====================================================================================================
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $412.16
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 4 points from transaction of $412.16 | Total: 879 points
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $519.36
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 5 points from transaction of $519.36 | Total: 884 points
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1271.32
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 12 points from transaction of $1271.32 | Total: 896 points
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $693.38
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 6 points from transaction of $693.38 | Total: 902 points
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $1586.57
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 15 points from transaction of $1586.57 | Total: 917 points
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $850.31
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 8 points from transaction of $850.31 | Total: 925 points
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $38.64
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1789.11
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 17 points from transaction of $1789.11 | Total: 942 points
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $27.60
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1593.79
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 15 points from transaction of $1593.79 | Total: 957 points
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $927.31
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 9 points from transaction of $927.31 | Total: 966 points
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $877.01
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 8 points from transaction of $877.01 | Total: 974 points
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $201.44
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 2 points from transaction of $201.44 | Total: 976 points
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1633.43
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 16 points from transaction of $1633.43 | Total: 992 points
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $104.65
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 1 points from transaction of $104.65 | Total: 993 points
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1647.12
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 16 points from transaction of $1647.12 | Total: 1009 points
+[2025-10-23 19:10:24] [SYSTEM] BALANCE_CHECK - Account: CL001-ACC-1
+[2025-10-23 19:10:24] [PROXY] Failed balance check attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $1499.95
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 14 points from transaction of $1499.95 | Total: 1023 points
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $789.70
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 7 points from transaction of $789.70 | Total: 1030 points
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $860.78
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 8 points from transaction of $860.78 | Total: 1038 points
+[2025-10-23 19:10:24] [SYSTEM] WITHDRAWAL_ATTEMPT - Account: CL001-ACC-1 | Amount: $1.00
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $242.02
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 2 points from transaction of $242.02 | Total: 1040 points
+[2025-10-23 19:10:24] [SYSTEM] DEPOSIT_ATTEMPT - Account: CL001-ACC-1 | Amount: $726.00
+[2025-10-23 19:10:24] [PROXY] Failed deposit attempt due to incorrect PIN.
+[2025-10-23 19:10:24] REWARDS: Earned 7 points from transaction of $726.00 | Total: 1047 points
+====================================================================================================
+PUMA BANK - MONTHLY OPERATIONS REPORT - MONTH 12
+Simulated Month: 12
+====================================================================================================
+[2025-10-23 19:10:24] [SYSTEM] MONTHLY_PROCESSING_START - Starting monthly operations for 1 accounts
+[2025-10-23 19:10:24] [SYSTEM] ACCOUNT_PROCESSING_START - Processing account: CL001-ACC-1
+[2025-10-23 19:10:24] SERVICE_FEE_PENDING: Rewards Program - $30.00 | Current Points: 1047
+[2025-10-23 19:10:24] [PROXY] Failed withdrawal attempt due to incorrect PIN.
+[2025-10-23 19:10:24] [SYSTEM] FEE_RECORDED - Fee: $30.00 | Total Fees: $30.00
+[2025-10-23 19:10:24] SERVICE_FEE_APPLIED: Rewards Program - $30.00 | Points Balance: 1047
+[2025-10-23 19:10:24] Rewards program: Monthly fee applied. Current points: 1047
+[2025-10-23 19:10:24] MONTHLY_PROCESSING: No interest applied to active account
+[2025-10-23 19:10:24] MONTHLY_SUMMARY: Active account processed
+[2025-10-23 19:10:24] [SYSTEM] ACCOUNT_PROCESSING_END - Completed processing account: CL001-ACC-1
+[2025-10-23 19:10:24] [SYSTEM] MONTHLY_PROCESSING_END - Completed monthly operations. Transactions: 1
+====================================================================================================
+MONTHLY REPORT SUMMARY
+Summary for Simulated Month: 12
+Total Accounts Processed: 1
+Total Transactions: 1
+Total Fees Collected: $30.00
+Total Interest Paid: $0.00
+====================================================================================================
