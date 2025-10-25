@@ -1,17 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: mx.unam.ciencias.myp.pumabank.test.patterns.state.states.ClosedStateTest$WithdrawTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! -- in mx.unam.ciencias.myp.pumabank.test.patterns.state.states.ClosedStateTest$WithdrawTests
-mx.unam.ciencias.myp.pumabank.test.patterns.state.states.ClosedStateTest$WithdrawTests.withdrawDenied -- Time elapsed: 0.001 s <<< ERROR!
-java.lang.NullPointerException
-	at java.base/java.util.Objects.requireNonNull(Objects.java:220)
-	at mx.unam.ciencias.myp.pumabank.model.Account.<init>(Account.java:49)
-	at mx.unam.ciencias.myp.pumabank.model.Account.<init>(Account.java:224)
-	at mx.unam.ciencias.myp.pumabank.test.patterns.state.states.ClosedStateTest$FakeAccount.<init>(ClosedStateTest.java:25)
-	at mx.unam.ciencias.myp.pumabank.test.patterns.state.states.ClosedStateTest$AccountHarness.<init>(ClosedStateTest.java:52)
-	at mx.unam.ciencias.myp.pumabank.test.patterns.state.states.ClosedStateTest$WithdrawTests.withdrawDenied(ClosedStateTest.java:83)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in mx.unam.ciencias.myp.pumabank.test.patterns.state.states.ClosedStateTest$WithdrawTests

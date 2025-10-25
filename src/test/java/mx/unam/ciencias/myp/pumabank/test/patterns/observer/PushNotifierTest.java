@@ -7,10 +7,11 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
 class PushNotifierTest {
+
     private final PrintStream originalOut = System.out;
     private ByteArrayOutputStream outContent;
-
     @BeforeEach
     void redirectStdout() {
         outContent = new ByteArrayOutputStream();
@@ -40,15 +41,18 @@ class PushNotifierTest {
         notifier.update("B");
         String sep = System.lineSeparator();
         String expected = "Notification: A" + sep + "Notification: B" + sep;
+
         assertEquals(expected, outContent.toString());
     }
 
     @Test
     @DisplayName("Handles null and empty events without throwing")
     void handlesNullAndEmpty() {
+
         PushNotifier notifier = new PushNotifier();
         assertDoesNotThrow(() -> notifier.update(null));
         assertDoesNotThrow(() -> notifier.update(""));
+
         String sep = System.lineSeparator();
         String expected = "Notification: null" + sep + "Notification: " + sep;
         assertEquals(expected, outContent.toString());

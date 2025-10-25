@@ -7,8 +7,12 @@
 /Users/victorabraham/Downloads/Proyecto01_SQLazo/src/test/java/mx/unam/ciencias/myp/pumabank/test/model/ClientTest.java
 /Users/victorabraham/Downloads/Proyecto01_SQLazo/src/test/java/mx/unam/ciencias/myp/pumabank/test/patterns/decorator/RewardsProgramDecoratorTest.java
 /Users/victorabraham/Downloads/Proyecto01_SQLazo/src/test/java/mx/unam/ciencias/myp/pumabank/test/patterns/state/states/ClosedStateTest.java
+/Users/victorabraham/Downloads/Proyecto01_SQLazo/src/test/java/mx/unam/ciencias/myp/pumabank/test/patterns/strategy/periods/PremiumInterestTest.java
 /Users/victorabraham/Downloads/Proyecto01_SQLazo/src/test/java/mx/unam/ciencias/myp/pumabank/test/patterns/observer/PushNotifierTest.java
 /Users/victorabraham/Downloads/Proyecto01_SQLazo/src/test/java/mx/unam/ciencias/myp/pumabank/test/patterns/proxy/PinAuthenticatorTest.java
 /Users/victorabraham/Downloads/Proyecto01_SQLazo/src/test/java/mx/unam/ciencias/myp/pumabank/test/patterns/state/states/ActiveStateTest.java
+/Users/victorabraham/Downloads/Proyecto01_SQLazo/src/test/java/mx/unam/ciencias/myp/pumabank/test/facade/PumaBankFacadeTest.java
 /Users/victorabraham/Downloads/Proyecto01_SQLazo/src/test/java/mx/unam/ciencias/myp/pumabank/test/patterns/proxy/AccountProxyTest.java
+/Users/victorabraham/Downloads/Proyecto01_SQLazo/src/test/java/mx/unam/ciencias/myp/pumabank/test/patterns/strategy/periods/MonthlyInterestTest.java
+/Users/victorabraham/Downloads/Proyecto01_SQLazo/src/test/java/mx/unam/ciencias/myp/pumabank/test/patterns/strategy/periods/AnnualInterestTest.java
 /Users/victorabraham/Downloads/Proyecto01_SQLazo/src/test/java/mx/unam/ciencias/myp/pumabank/test/model/AccountTest.java
