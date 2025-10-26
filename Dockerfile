@@ -1,6 +1,6 @@
-FROM openjdk:17-slim
+FROM openjdk:17-jdk-slim
 WORKDIR /app
-COPY src ./src
-RUN apt-get update && apt-get install -y findutils
-RUN mkdir out && javac -d out $(find src -name "*.java")
+RUN apt-get update && apt-get install -y --no-install-recommends findutils && rm -rf /var/lib/apt/lists/*
+COPY src/main/java ./src
+RUN mkdir -p out && find src -name '*.java' -print0 | xargs -0 -r javac -d out
 CMD ["java", "-cp", "out", "mx.unam.ciencias.myp.pumabank.Main"]
