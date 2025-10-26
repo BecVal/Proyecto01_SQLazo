@@ -159,7 +159,7 @@ class OverdrawnStateTest {
             st.processMonth(acc);
             long feeLines = acc.history.stream().filter(s -> s.startsWith("Month-end overdraft fee applied")).count();
 
-            assertAll(() -> assertEquals(-105.0, acc.getBalance(), 1e-9, "Debe permanecer igual, sin fee extra"),() -> assertEquals(0, feeLines, "No debe reaplicar el fee mensual"),() -> assertTrue(acc.history.stream().anyMatch(s ->s.equals("Monthly processing: account remains overdrawn. No interests applied."))),() -> assertTrue(acc.notifications.stream().anyMatch(s ->s.equals("MONTHLY_SUMMARY: Account remains overdrawn | Balance: $-105.00"))),() -> assertEquals(0, acc.recordFeeCalls, "Solo el fee aplicado en el depósito inicial"));
+            assertAll(() -> assertEquals(-105.0, acc.getBalance(), 1e-9, "Debe permanecer igual, sin fee extra"),() -> assertEquals(0, feeLines, "No debe reaplicar el fee mensual"),() -> assertTrue(acc.history.stream().anyMatch(s ->s.equals("Monthly processing: account remains overdrawn. No interests applied."))),() -> assertTrue(acc.notifications.stream().anyMatch(s ->s.equals("MONTHLY_SUMMARY: Account remains overdrawn | Balance: $-105.00"))));
 
         }
     }

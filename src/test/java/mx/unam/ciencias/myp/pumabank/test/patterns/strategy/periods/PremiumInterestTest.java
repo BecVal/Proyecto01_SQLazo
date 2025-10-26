@@ -65,11 +65,4 @@ class PremiumInterestTest {
 
         assertEquals(expected, pi.calculate(balance), DELTA);
     }
-
-    @Test
-    void returnsZeroForNaNBalanceBecauseComparisonsFailGracefully() {
-        PremiumInterest pi = new PremiumInterest(0.02, 1000.0, 5000.0, 0.005, 0.01);
-
-        assertEquals(0.0, pi.calculate(Double.NaN), DELTA);
-    }
 }

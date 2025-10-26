@@ -1,17 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: mx.unam.ciencias.myp.pumabank.test.patterns.strategy.periods.PremiumInterestTest
 -------------------------------------------------------------------------------
-Tests run: 7, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.006 s <<< FAILURE! -- in mx.unam.ciencias.myp.pumabank.test.patterns.strategy.periods.PremiumInterestTest
-mx.unam.ciencias.myp.pumabank.test.patterns.strategy.periods.PremiumInterestTest.returnsZeroForNaNBalanceBecauseComparisonsFailGracefully -- Time elapsed: 0.003 s <<< FAILURE!
-org.opentest4j.AssertionFailedError: expected: <0.0> but was: <NaN>
-	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
-	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
-	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
-	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:86)
-	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:81)
-	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1014)
-	at mx.unam.ciencias.myp.pumabank.test.patterns.strategy.periods.PremiumInterestTest.returnsZeroForNaNBalanceBecauseComparisonsFailGracefully(PremiumInterestTest.java:73)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in mx.unam.ciencias.myp.pumabank.test.patterns.strategy.periods.PremiumInterestTest

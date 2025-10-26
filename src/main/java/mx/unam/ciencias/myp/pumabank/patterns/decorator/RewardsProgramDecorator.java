@@ -33,11 +33,10 @@ public class RewardsProgramDecorator extends AccountDecorator {
      */
     @Override
     public void deposit(double amount, String pin) {
-        try {
-            super.deposit(amount, pin);
+        double balanceBefore = getUnderlyingAccountBalance();
+        super.deposit(amount, pin);
+        if (getUnderlyingAccountBalance() > balanceBefore) {
             addRewardPoints(amount);
-        } catch (Exception e) {
-            throw e; 
         }
     }
 
@@ -49,11 +48,10 @@ public class RewardsProgramDecorator extends AccountDecorator {
      */
     @Override
     public void withdraw(double amount, String pin) {
-        try {
-            super.withdraw(amount, pin);
+        double balanceBefore = getUnderlyingAccountBalance();
+        super.withdraw(amount, pin);
+        if (getUnderlyingAccountBalance() < balanceBefore) {
             addRewardPoints(amount);
-        } catch (Exception e) {
-            throw e;
         }
     }
 
@@ -65,15 +63,20 @@ public class RewardsProgramDecorator extends AccountDecorator {
         notify(String.format("SERVICE_FEE_PENDING: Rewards Program - $%.2f | Current Points: %d", 
             REWARDS_FEE, rewardPoints));
         
-        super.withdraw(REWARDS_FEE, "SYSTEM");
+        double balanceBefore = getUnderlyingAccountBalance();
+        super.withdraw(REWARDS_FEE, "SYSTEM"); 
+        double balanceAfter = getUnderlyingAccountBalance();
 
-        recordFee(REWARDS_FEE);
-
-        addHistory("Rewards program fee applied: $" + REWARDS_FEE);
-        
-        notify(String.format("SERVICE_FEE_APPLIED: Rewards Program - $%.2f | Points Balance: %d", 
-            REWARDS_FEE, rewardPoints));
-        notify("Rewards program: Monthly fee applied. Current points: " + rewardPoints);
+        if (balanceAfter < balanceBefore) { 
+            recordFee(REWARDS_FEE);
+            addHistory("Rewards program fee applied: $" + REWARDS_FEE);
+            notify(String.format("SERVICE_FEE_APPLIED: Rewards Program - $%.2f | Points Balance: %d", 
+                REWARDS_FEE, rewardPoints));
+            notify("Rewards program: Monthly fee applied. Current points: " + rewardPoints);
+        } else {
+            addHistory("Rewards program monthly fee could not be applied: $" + REWARDS_FEE + " (insufficient funds or overdrawn)");
+            notify(String.format("SERVICE_FEE_DENIED: Rewards Program - $%.2f | Reason: Insufficient funds or overdrawn", REWARDS_FEE));
+        }
         
         super.processMonth();
     }

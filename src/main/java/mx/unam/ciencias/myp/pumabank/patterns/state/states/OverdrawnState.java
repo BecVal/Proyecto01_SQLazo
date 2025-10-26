@@ -1,6 +1,5 @@
 package mx.unam.ciencias.myp.pumabank.patterns.state.states;
 import mx.unam.ciencias.myp.pumabank.model.Account;
-
 import mx.unam.ciencias.myp.pumabank.patterns.state.AccountState;
 
 /**
@@ -36,6 +35,7 @@ public class OverdrawnState implements AccountState {
             feeApplied = true;
             account.addHistory("Overdraft fee applied: $" + OVERDRAFT_FEE);
         
+            account.recordFee(OVERDRAFT_FEE); 
             account.notify(String.format("OVERDRAFT_FEE: $%.2f | Balance Before Fee: $%.2f | Balance After Fee: $%.2f", 
                 OVERDRAFT_FEE, balanceBefore, bal));
         }

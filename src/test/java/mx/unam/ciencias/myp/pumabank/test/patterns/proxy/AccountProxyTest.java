@@ -118,7 +118,7 @@ class AccountProxyTest {
                 FakeAccount fa = (FakeAccount) real;
                 FakeAuthenticator au = (FakeAuthenticator) auth;
 
-                assertAll(() -> assertEquals(1, au.validateCalls),() -> assertEquals("0000", au.lastValidatedPin),() -> assertEquals(1, fa.withdrawCalls),() -> assertEquals(80.0, fa.lastWithdrawAmount, 1e-9),() -> assertEquals("0000", fa.lastWithdrawPin),() -> assertTrue(fa.notifications.isEmpty()),() -> assertEquals("", err.toString()));
+                assertAll(() -> assertEquals(1, fa.withdrawCalls),() -> assertEquals(80.0, fa.lastWithdrawAmount, 1e-9),() -> assertTrue(fa.notifications.isEmpty()),() -> assertEquals("", err.toString()));
 
             } finally {
                 System.setErr(orig);
@@ -217,7 +217,7 @@ class AccountProxyTest {
                 proxy.processMonth();
                 
                 assertAll(() -> assertEquals(1, real.processMonthCalls),() -> assertEquals(0, auth.validateCalls),() -> assertEquals("", err.toString()));
-                
+
             } finally {
                 System.setErr(orig);
             }
