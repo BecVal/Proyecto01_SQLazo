@@ -1,5 +1,7 @@
 package mx.unam.ciencias.myp.pumabank.test.patterns.decorator;
+
 import mx.unam.ciencias.myp.pumabank.patterns.decorator.PremiumAlertsDecorator;
+import mx.unam.ciencias.myp.pumabank.patterns.decorator.AccountDecorator;
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +9,15 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import mx.unam.ciencias.myp.pumabank.model.IAccount;
-
+/**
+ * Tests for {@link PremiumAlertsDecorator}, verifying that operations delegate to the underlying account and premium alert notifications are triggered.
+ */
 class PremiumAlertsDecoratorTest {
+
+    /**
+     * 
+     * Base account used to record delegated calls and store values.
+     */
 
     static class RecordingAccount implements IAccount {
         double lastDepositAmount;
@@ -22,7 +31,6 @@ class PremiumAlertsDecoratorTest {
         String lastCheckBalancePin;
         final List<String> history = new ArrayList<>();
         final List<String> notifications = new ArrayList<>();
-
         @Override
         public void deposit(double amount, String pin) {
             depositCalls++;
@@ -33,8 +41,7 @@ class PremiumAlertsDecoratorTest {
         @Override
         public void withdraw(double amount, String pin) {
             withdrawCalls++;
-            lastWithdrawAmount = amount;
-            lastWithdrawPin = pin;
+            lastWithdrawAmount = amount;lastWithdrawPin = pin;
         }
 
         @Override
@@ -53,10 +60,16 @@ class PremiumAlertsDecoratorTest {
         public void notifyObservers(String message) { notifications.add(message); }
     }
 
-    static class CaptureDecorator extends mx.unam.ciencias.myp.pumabank.patterns.decorator.AccountDecorator {
+    /**
+     * Decorator used to capture history and notifications instead of forwarding.
+     * 
+     */
+    static class CaptureDecorator extends AccountDecorator {
         final List<String> capturedHistory = new ArrayList<>();
+
         final List<String> capturedNotifications = new ArrayList<>();
         public CaptureDecorator(IAccount decoratedAccount) {
+
             super(decoratedAccount);
         }
 
@@ -67,6 +80,7 @@ class PremiumAlertsDecoratorTest {
 
         @Override
         protected void notify(String message) {
+
             capturedNotifications.add(message);
         }
     }
@@ -74,12 +88,18 @@ class PremiumAlertsDecoratorTest {
     @Nested
     @DisplayName("Deposit behavior")
     class DepositBehavior {
+
+        /**
+         * Confirms deposit delegates to underlying account and premium notifications occur.
+         * 
+         */
         @Test
         @DisplayName("Delegates deposit and sends a premium alert")
         void depositDelegatesAndNotifies() {
             RecordingAccount base = new RecordingAccount();
             CaptureDecorator mid = new CaptureDecorator(base);
             PremiumAlertsDecorator deco = new PremiumAlertsDecorator(mid);
+            
             deco.deposit(250.0, "1234");
 
             assertAll(() -> assertEquals(1, base.depositCalls),() -> assertEquals(250.0, base.lastDepositAmount, 1e-9),() -> assertEquals("1234", base.lastDepositPin));
@@ -89,13 +109,20 @@ class PremiumAlertsDecoratorTest {
     @Nested
     @DisplayName("Withdraw behavior")
     class WithdrawBehavior {
+
+        /**
+         * Confirms withdraw delegates and triggers notification.
+         */
         @Test
+
         @DisplayName("Delegates withdraw and sends a premium alert")
         void withdrawDelegatesAndNotifies() {
             RecordingAccount base = new RecordingAccount();
+
             CaptureDecorator mid = new CaptureDecorator(base);
             PremiumAlertsDecorator deco = new PremiumAlertsDecorator(mid);
             deco.withdraw(80.0, "0000");
+
             assertAll(() -> assertEquals(1, base.withdrawCalls),() -> assertEquals(80.0, base.lastWithdrawAmount, 1e-9),() -> assertEquals("0000", base.lastWithdrawPin));
         }
     }
@@ -103,6 +130,11 @@ class PremiumAlertsDecoratorTest {
     @Nested
     @DisplayName("Balance check behavior")
     class BalanceBehavior {
+
+        /**
+         * 
+         * Ensures balance checks delegate and a premium notification is sent.
+         */
         @Test
         @DisplayName("Delegates checkBalance, returns value, and sends a premium alert with balance")
         void checkBalanceDelegatesAndNotifies() {
@@ -115,9 +147,14 @@ class PremiumAlertsDecoratorTest {
             assertAll(() -> assertEquals("pin-xyz", base.lastCheckBalancePin),() -> assertEquals(4321.99, result, 1e-9),() -> assertEquals(1, mid.capturedNotifications.size()),() -> assertTrue(mid.capturedNotifications.get(0).startsWith("PREMIUM_ALERT: Balance checked - $4321.99")));
         }
     }
+
     @Nested
     @DisplayName("Monthly processing")
     class MonthlyProcessing {
+
+        /**
+         * Verifies monthly fee and notification are applied, and normal delegation continues.
+         */
         @Test
         @DisplayName("Applies alerts fee, records history/notification, and delegates processMonth")
         void appliesMonthlyFeeAndDelegates() {
@@ -127,6 +164,12 @@ class PremiumAlertsDecoratorTest {
             deco.processMonth();
 
             assertAll(() -> assertEquals(1, base.withdrawCalls),() -> assertEquals(25.0, base.lastWithdrawAmount, 1e-9),() -> assertEquals("SYSTEM", base.lastWithdrawPin),() -> assertEquals(1, base.processMonthCalls));
+
+
         }
     }
+
 }
+
+
+

@@ -2,6 +2,7 @@ package mx.unam.ciencias.myp.pumabank.test.patterns.state.states;
 import mx.unam.ciencias.myp.pumabank.model.Account;
 import mx.unam.ciencias.myp.pumabank.model.Client;
 import mx.unam.ciencias.myp.pumabank.patterns.state.AccountState;
+
 import mx.unam.ciencias.myp.pumabank.patterns.state.states.ActiveState;
 import mx.unam.ciencias.myp.pumabank.patterns.strategy.InterestCalculation;
 import mx.unam.ciencias.myp.pumabank.patterns.strategy.periods.AnnualInterest;
@@ -13,36 +14,53 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
+/** Tests for {@link ActiveState}: deposits, withdrawals, interest strategies, negative balance path, and unfreeze. */
 class ActiveStateTest {
+    /** Facade stub to suppress side effects during tests. 
+    */
     static class DummyFacade extends PumaBankFacade {
+
         @Override public void recordFeeCollection(double fee) {}
         @Override public void recordInterestPayment(double interest) {}
+
     }
 
+    /**
+     * Fake account to capture state changes, history, notifications, and balances.
+     */
     static class FakeAccount extends Account {
+
         private static final Client DUMMY_CLIENT = new Client("Diego", "ID-1");
         private static final AccountState NOOP_STATE = new AccountState() {
+
             @Override public void deposit(double a, Account acc) {}
             @Override public void withdraw(double a, Account acc) {}
             @Override public void processMonth(Account acc) {}
             @Override public void unfreeze(Account acc) {}
+
         };
         private static final InterestCalculation ZERO_INTEREST = balance -> 0.0;
         FakeAccount() {
+
             super(DUMMY_CLIENT, 0.0, NOOP_STATE, ZERO_INTEREST, new DummyFacade());
+
         }
         double balance = 0.0;
+
         final List<String> history = new ArrayList<>();
         final List<String> notifications = new ArrayList<>();
 
         AccountState lastStateChange = null;
+
         int processMonthCalls = 0;
         InterestCalculation policy = ZERO_INTEREST;
         @Override public double getBalance() { return balance; }
         @Override public void setBalance(double b) { balance = b; }
         @Override public void addHistory(String e) { history.add(e); }
+
         @Override public void notify(String m) { notifications.add(m); }
 
         @Override public void changeState(AccountState s) { lastStateChange = s; }
@@ -50,22 +68,33 @@ class ActiveStateTest {
         @Override public InterestCalculation getInterestPolicy() { return policy; }
     }
 
+    /**
+     * Harness to set initial balance and read history/notifications easily.
+     * 
+     */
     static class AccountHarness {
         final FakeAccount account = new FakeAccount();
+
         AccountHarness(double initialBalance) {
+
             account.balance = initialBalance;
         }
 
         double balance() { return account.balance; }
+
         List<String> history() { return account.history; }
 
         List<String> notifications() { return account.notifications; }
+
+
+
     }
 
     @Nested
     @DisplayName("Basics: deposit / withdraw")
     class Basics {
 
+        /** Deposit increases balance, records history, and notifies; no state change. */
         @Test
         @DisplayName("deposit adds to balance, records history and notifies")
         void deposit() {
@@ -77,6 +106,7 @@ class ActiveStateTest {
 
             assertNull(h.account.lastStateChange);
         }
+        /** Withdraw with sufficient funds updates balance and logs; remains Active. */
         @Test
         @DisplayName("withdraw with sufficient funds subtracts and records")
         void withdrawSufficient() {
@@ -88,8 +118,11 @@ class ActiveStateTest {
             assertAll(() -> assertEquals(120.0, h.balance(), 1e-9),() -> assertTrue(h.history().stream().anyMatch(s ->s.startsWith("Withdrawal: $80.0") && s.contains("Balance: $120.0"))),() -> assertTrue(h.notifications().stream().anyMatch(s ->s.startsWith("WITHDRAWAL: $80.00")&& s.contains("Balance Before: $200.00")&& s.contains("Balance After: $120.00"))));
             assertNull(h.account.lastStateChange);
 
+
         }
 
+
+        /** Withdraw exceeding funds triggers OverdrawnState and logs accordingly. */
         @Test
         @DisplayName("withdraw with insufficient funds triggers OverdrawnState")
         void withdrawInsufficient() {
@@ -97,7 +130,6 @@ class ActiveStateTest {
             ActiveState state = new ActiveState();
             state.withdraw(120.0, h.account);
             assertAll(() -> assertEquals(-70.0, h.balance(), 1e-9),() -> assertTrue(h.history().stream().anyMatch(s ->s.startsWith("Withdrawal exceeded funds. Overdraft triggered. Amount: $120.0"))),() -> assertTrue(h.history().stream().anyMatch(s ->s.equals("State changed -> OverdrawnState"))),() -> assertTrue(h.notifications().stream().anyMatch(s ->s.startsWith("WITHDRAWAL_OVERDRAFT: $120.00") && s.contains("STATE: Active -> Overdrawn"))));
-
             assertNotNull(h.account.lastStateChange);
 
             assertEquals("OverdrawnState", h.account.lastStateChange.getClass().getSimpleName());
@@ -109,9 +141,11 @@ class ActiveStateTest {
     @DisplayName("processMonth with MonthlyInterest")
     class MonthlyInterestTests {
 
+        /** Applies monthly interest when balance meets threshold; no extra processMonth delegation. */
         @Test
         @DisplayName("Applies monthly interest when balance >= minimum")
         void monthlyApplies() {
+
             AccountHarness h = new AccountHarness(1000.0);
             h.account.policy = new MonthlyInterest(0.01, 500.0);
 
@@ -125,8 +159,10 @@ class ActiveStateTest {
 
         }
 
+        /** Records no-interest messages when below minimum or zero. */
         @Test
         @DisplayName("Records 'no interest' when below minimum or zero")
+
         void monthlyNoInterest() {
             AccountHarness h = new AccountHarness(400.0);
             h.account.policy = new MonthlyInterest(0.02, 500.0);
@@ -142,17 +178,26 @@ class ActiveStateTest {
     @Nested
     @DisplayName("processMonth with PremiumInterest")
     class PremiumInterestTests {
+        /** Calculates base plus tiered bonus on large balances; logs and summarizes. */
         @Test
+
         @DisplayName("Applies base + tiered bonus on high balances")
         void premiumTiers() {
             AccountHarness h = new AccountHarness(20000.0);
             h.account.policy = new PremiumInterest(0.005, 10000, 20000, 0.003, 0.006);
+
             ActiveState state = new ActiveState();
             state.processMonth(h.account);
 
             assertAll(() -> assertEquals(20220.0, h.balance(), 1e-9),() -> assertTrue(h.history().stream().anyMatch(s ->s.startsWith("Monthly interest applied: $220.0") && s.contains("Balance: $20220.0"))),() -> assertTrue(h.notifications().stream().anyMatch(s ->s.startsWith("INTEREST_APPLIED: $220.00")&& s.contains("Balance Before: $20000.00")&& s.contains("Balance After: $20220.00"))),() -> assertTrue(h.notifications().stream().anyMatch(s ->s.equals("MONTHLY_SUMMARY: Active account processed"))));
         }
 
+        /** 
+         * 
+         * No interest when balance is zero or negative.
+         * 
+         * 
+         */
         @Test
         @DisplayName("No interest when balance <= 0")
         void premiumZeroOrNegative() {
@@ -170,6 +215,7 @@ class ActiveStateTest {
     @Nested
     @DisplayName("processMonth with AnnualInterest")
     class AnnualInterestTests {
+        /** Months 1..11: no interest payout; just record messages. */
         @Test
         @DisplayName("Months 1..11: returns 0.0 interest")
         void annualNonPayoutMonths() {
@@ -191,6 +237,7 @@ class ActiveStateTest {
 
         }
 
+        /** Month 12: pays annual interest when average qualifies. */
         @Test
         @DisplayName("Month 12 with avg above threshold pays annual interest on current balance")
         void annualPayoutMonth() {
@@ -203,6 +250,7 @@ class ActiveStateTest {
             calc.recordMonthBalance(2000.0);
             calc.setCurrentMonth(12);
             h.account.policy = calc;
+
             ActiveState state = new ActiveState();
 
             state.processMonth(h.account);
@@ -217,6 +265,7 @@ class ActiveStateTest {
     @DisplayName("Negative balance path")
     class NegativePath {
 
+        /** Negative balance: switch to OverdrawnState and delegate processMonth. */
         @Test
         @DisplayName("If balance is negative, switch to OverdrawnState and delegate .processMonth()")
         void negativeBalanceDelegatesToOverdrawn() {
@@ -228,6 +277,7 @@ class ActiveStateTest {
             state.processMonth(h.account);
 
             assertNotNull(h.account.lastStateChange);
+
             assertEquals("OverdrawnState", h.account.lastStateChange.getClass().getSimpleName());
             assertTrue(h.history().stream().anyMatch(s ->s.contains("Detected negative balance") && s.contains("OverdrawnState")));
             assertTrue(h.notifications().stream().anyMatch(s ->s.contains("Delegating month-end processing to OverdrawnState.")));
@@ -235,14 +285,17 @@ class ActiveStateTest {
             assertEquals(1, h.account.processMonthCalls);
 
         }
+
     }
 
     @Nested
     @DisplayName("unfreeze")
     class Unfreeze {
 
+        /** Calling unfreeze on ActiveState just logs and notifies; no transition. */
         @Test
         @DisplayName("Already active: only notifies and records")
+        
         void alreadyActive() {
             AccountHarness h = new AccountHarness(100.0);
             ActiveState state = new ActiveState();

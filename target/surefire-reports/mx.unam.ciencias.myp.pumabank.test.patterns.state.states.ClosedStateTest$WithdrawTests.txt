@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: mx.unam.ciencias.myp.pumabank.test.patterns.state.states.ClosedStateTest$WithdrawTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in mx.unam.ciencias.myp.pumabank.test.patterns.state.states.ClosedStateTest$WithdrawTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in mx.unam.ciencias.myp.pumabank.test.patterns.state.states.ClosedStateTest$WithdrawTests

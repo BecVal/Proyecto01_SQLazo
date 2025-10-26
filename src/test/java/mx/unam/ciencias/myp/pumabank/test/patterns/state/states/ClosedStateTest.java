@@ -1,3 +1,5 @@
+
+
 package mx.unam.ciencias.myp.pumabank.test.patterns.state.states;
 import mx.unam.ciencias.myp.pumabank.model.Account;
 import mx.unam.ciencias.myp.pumabank.model.Client;
@@ -10,28 +12,42 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests for {@link ClosedState} ensuring all operations are denied and logged without side effects.
+ * 
+ * 
+ */
 class ClosedStateTest {
+    /** Facade stub to avoid recording side effects in tests. */
     static class DummyFacade extends PumaBankFacade {
 
         @Override public void recordFeeCollection(double fee) {}
+
         @Override public void recordInterestPayment(double interest) {}
 
     }
 
+    /** Fake account capturing calls, counters, and messages for verification. */
     static class FakeAccount extends Account {
         private static final Client DUMMY_CLIENT = new Client("Bruno", "ID-1");
+
         private static final AccountState NOOP_STATE = new AccountState() {
             @Override public void deposit(double amount, Account account) {}
+
             @Override public void withdraw(double amount, Account account) {}
+
             @Override public void processMonth(Account account) {}
             @Override public void unfreeze(Account account) {}
         };
+
         private static final InterestCalculation ZERO_INTEREST = balance -> 0.0;
 
         FakeAccount(double initial) {
+
             super(DUMMY_CLIENT, 0.0, NOOP_STATE, ZERO_INTEREST, new DummyFacade());
             this.balance = initial;
         }
@@ -39,6 +55,7 @@ class ClosedStateTest {
         double balance;
         final List<String> history = new ArrayList<>();
         final List<String> notifications = new ArrayList<>();
+
         AccountState lastStateChange = null;
         int setBalanceCalls = 0;
         int changeStateCalls = 0;
@@ -54,6 +71,7 @@ class ClosedStateTest {
         @Override public void setBalance(double b) { setBalanceCalls++; balance = b; }
         @Override public void addHistory(String e) { history.add(e); }
         @Override public void notify(String m) { notifications.add(m); }
+
         @Override public void changeState(AccountState s) { changeStateCalls++; lastStateChange = s; }
         @Override public void processMonth() { processMonthCalls++; }
         @Override public void withdraw(double amount, String pin) { withdrawCalls++; lastWithdrawAmount = amount; lastWithdrawPin = pin; }
@@ -61,10 +79,14 @@ class ClosedStateTest {
 
     }
 
+
+    /** Harness exposing the fake account and quick accessors for assertions.
+    */
     static class AccountHarness {
 
         final FakeAccount account = new FakeAccount(100.0);
         final List<String> history = account.history;
+
         final List<String> notifications = account.notifications;
 
         AccountState lastStateChange() { return account.lastStateChange; }
@@ -76,9 +98,13 @@ class ClosedStateTest {
     @DisplayName("deposit()")
     class DepositTests {
 
+        /**
+         * 
+         * Denies deposits and logs; balance and state remain unchanged.
+         * 
+         */
         @Test
         @DisplayName("Denies deposits: records history and notifies; no balance/state changes")
-
         void depositDenied() {
 
             AccountHarness h = new AccountHarness();
@@ -102,9 +128,11 @@ class ClosedStateTest {
 
     @Nested
     @DisplayName("withdraw()")
-
     class WithdrawTests {
 
+        /**
+         * Denies withdrawals and logs; balance and state remain unchanged.
+         */
         @Test
         @DisplayName("Denies withdrawals: records history and notifies; no balance/state changes")
         void withdrawDenied() {
@@ -128,8 +156,10 @@ class ClosedStateTest {
     @DisplayName("processMonth()")
     class ProcessMonthTests {
 
+        /** Skips monthly processing for closed accounts; only logs and notifies. */
         @Test
         @DisplayName("Skips processing: records history and notifies; no balance/state changes")
+
         void processMonthNoOp() {
             AccountHarness h = new AccountHarness();
             ClosedState state = new ClosedState();
@@ -151,12 +181,11 @@ class ClosedStateTest {
 
     @Nested
     @DisplayName("unfreeze()")
-
     class UnfreezeTests {
 
+        /** Denies unfreeze attempts; logs and notifies; no state change occurs. */
         @Test
         @DisplayName("Denies unfreeze: records history and notifies; no balance/state changes")
-
         void unfreezeDenied() {
             AccountHarness h = new AccountHarness();
             ClosedState state = new ClosedState();
@@ -173,4 +202,6 @@ class ClosedStateTest {
             assertEquals(0, h.account.depositCalls);
         }
     }
+
 }
+

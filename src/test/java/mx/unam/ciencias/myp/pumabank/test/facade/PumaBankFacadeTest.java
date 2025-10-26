@@ -1,5 +1,4 @@
 package mx.unam.ciencias.myp.pumabank.test.facade;
-
 import mx.unam.ciencias.myp.pumabank.facade.PumaBankFacade;
 import mx.unam.ciencias.myp.pumabank.model.Account;
 import mx.unam.ciencias.myp.pumabank.model.Client;
@@ -10,27 +9,40 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
-
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests for the PumaBankFacade main bank interface.
+ * Validates registration, account creation, operations and reporting.
+ */
 class PumaBankFacadeTest {
 
+
+
+    /**
+     * Creates a new facade in quiet mode to avoid console output during tests.
+     */
     private PumaBankFacade newQuietFacade() {
         PumaBankFacade f = new PumaBankFacade();
+
         f.setQuietMode(true);
         return f;
     }
 
+
     @Nested
     @DisplayName("Client Registration")
     class ClientRegistration {
+
+        /**
+         * Ensures registerClient stores the client and makes it retrievable.
+         */
 
         @Test
         @DisplayName("registerClient stores and exposes the new client")
         void registersClient() {
             PumaBankFacade f = newQuietFacade();
             Client c = f.registerClient("Hi", "CLI-1");
-
             assertAll(() -> assertEquals("Hi", c.getName()),() -> assertEquals("CLI-1", c.getClientId()),() -> assertEquals(1, f.getAllClients().size()),() -> assertSame(c, f.getAllClients().get(0)));
         }
     }
@@ -39,10 +51,16 @@ class PumaBankFacadeTest {
     @DisplayName("Account Creation")
     class AccountCreation {
 
+        /**
+         * Validates creation of a basic monthly account with starting balance.
+         * 
+         */
         @Test
-        @DisplayName("createAccount creates a MONTHLY interest account without services")
+        @DisplayName("createAccount creates a monthly interest account without services")
+
         void createMonthlyAccount() {
             PumaBankFacade f = newQuietFacade();
+
             f.registerClient("Hi", "G1");
 
             AccountProxy proxy = f.createAccount("G1", 1500.0, "1234", "MONTHLY", Collections.emptyList());
@@ -54,23 +72,34 @@ class PumaBankFacadeTest {
             assertEquals(1500.0, balance, 1e-9);
         }
 
+        /**
+         * Ensures account decorators do not break core behavior.
+         */
         @Test
         @DisplayName("createAccount with decorators still works properly")
         void createWithServices() {
+
             PumaBankFacade f = newQuietFacade();
+
             f.registerClient("Hi", "L1");
 
             List<String> services = Arrays.asList("ANTI_FRAUD", "PREMIUM_ALERTS", "REWARDS");
             AccountProxy proxy = f.createAccount("L1", 800.0, "0000", "MONTHLY", services);
+
             assertNotNull(proxy);
             assertEquals(1, f.getClientAccounts("L1").size());
             assertDoesNotThrow(() -> f.deposit("L1-ACC-1", 50.0, "0000"));
         }
 
+        /**
+         * Ensures invalid input leads to IllegalArgumentException.
+         */
         @Test
         @DisplayName("createAccount throws for invalid client or interest type")
         void createErrors() {
+
             PumaBankFacade f = newQuietFacade();
+
             f.registerClient("Hi", "N1");
             assertThrows(IllegalArgumentException.class,() -> f.createAccount("UNKNOWN", 100.0, "1", "MONTHLY", null));
             assertThrows(IllegalArgumentException.class,() -> f.createAccount("N1", 100.0, "1", "INVALID", null));
@@ -81,7 +110,11 @@ class PumaBankFacadeTest {
     @DisplayName("Facade Operations")
     class Operations {
 
+        /**
+         * Ensures deposit, withdrawal and balance operations update values and log activity.
+         */
         @Test
+
         @DisplayName("deposit, withdraw and checkBalance delegate correctly and record transactions")
         void depositWithdrawBalance() {
             PumaBankFacade f = newQuietFacade();
@@ -91,12 +124,18 @@ class PumaBankFacadeTest {
             String id = "M1-ACC-1";
             int before = f.getMonthlyTransactions();
             f.deposit(id, 50.0, "1111");
+
             f.withdraw(id, 20.0, "1111");
             double balance = f.checkBalance(id, "1111");
 
             assertAll(() -> assertEquals(130.0, balance, 1e-9),() -> assertTrue(f.getMonthlyTransactions() >= before + 3));
         }
 
+
+
+        /**
+         * Validates expected errors on unknown account IDs.
+         */
         @Test
         @DisplayName("Throws when trying to deposit, withdraw, or checkBalance with unknown accountId")
         void unknownAccountErrors() {
@@ -112,11 +151,16 @@ class PumaBankFacadeTest {
     @DisplayName("Monthly Processing")
     class MonthlyProcessing {
 
+        /**
+         * Ensures accounts above the minimum balance receive monthly interest.
+         */
         @Test
         @DisplayName("processMonthlyOperations applies monthly interest when balance >= threshold")
+
         void processesAllAndAppliesMonthlyInterest() {
             PumaBankFacade f = newQuietFacade();
             f.registerClient("Hi", "H1");
+
             f.createAccount("H1", 2000.0, "pin", "MONTHLY", null);
             f.createAccount("H1", 500.0, "pin2", "MONTHLY", null);
             AccountProxy p1 = f.findAccount("H1-ACC-1");
@@ -141,11 +185,15 @@ class PumaBankFacadeTest {
     @DisplayName("Account Deletion")
     class Deletion {
 
+        /**
+         * Checks that deletion returns success only for existing accounts.
+         */
         @Test
         @DisplayName("deleteAccount removes it and returns true; invalid or missing -> false")
         void deleteAccountBehavior() {
             PumaBankFacade f = newQuietFacade();
             f.registerClient("Hi", "B1");
+
             f.createAccount("B1", 100.0, "x", "MONTHLY", null);
             f.createAccount("B1", 200.0, "y", "MONTHLY", null);
             assertEquals(2, f.getClientAccounts("B1").size());
@@ -163,10 +211,14 @@ class PumaBankFacadeTest {
     @DisplayName("Portfolio and Metrics")
     class PortfolioAndMetrics {
 
+        /**
+         * Validates portfolio summary structure and totals.
+         */
         @Test
         @DisplayName("getClientPortfolio summarizes total accounts and balance")
         void portfolioSummary() {
             PumaBankFacade f = newQuietFacade();
+
             f.registerClient("Hi", "T1");
             f.createAccount("T1", 100.0, "1", "MONTHLY", null);
             f.createAccount("T1", 250.5, "2", "MONTHLY", null);
@@ -176,11 +228,15 @@ class PumaBankFacadeTest {
             assertAll(() -> assertEquals(2, portfolio.get("totalAccounts")),() -> assertEquals(350.5, (double) portfolio.get("totalBalance"), 1e-9),() -> assertTrue(portfolio.get("client") instanceof Client),() -> assertTrue(portfolio.get("accounts") instanceof List<?>));
         }
 
+        /**
+         * Ensures fee and interest totals accumulate correctly.
+         */
         @Test
         @DisplayName("recordFeeCollection and recordInterestPayment accumulate totals correctly")
         void feeAndInterestCounters() {
             PumaBankFacade f = newQuietFacade();
             f.recordFeeCollection(12.5);
+
             f.recordFeeCollection(7.5);
             f.recordInterestPayment(3.0);
             f.recordInterestPayment(2.0);
@@ -188,6 +244,9 @@ class PumaBankFacadeTest {
             assertAll(() -> assertEquals(20.0, f.getTotalFeesCollected(), 1e-9),() -> assertEquals(5.0, f.getTotalInterestPaid(), 1e-9));
         }
 
+        /**
+         * Confirms client account list updates as expected when accounts are added.
+         */
         @Test
         @DisplayName("getClientAccounts returns list")
         void getClientAccountsList() {
@@ -203,10 +262,14 @@ class PumaBankFacadeTest {
             assertEquals(1, one.size());
         }
 
+        /**
+         * Ensures requesting a portfolio for a non-existing client throws.
+         */
         @Test
         @DisplayName("getClientPortfolio throws if client not found")
         void portfolioUnknownClient() {
             PumaBankFacade f = newQuietFacade();
+            
             assertThrows(IllegalArgumentException.class, () -> f.getClientPortfolio("NO"));
         }
     }
