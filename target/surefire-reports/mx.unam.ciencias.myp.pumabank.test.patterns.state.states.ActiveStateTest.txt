@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: mx.unam.ciencias.myp.pumabank.test.patterns.state.states.ActiveStateTest
 -------------------------------------------------------------------------------
-Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.021 s -- in mx.unam.ciencias.myp.pumabank.test.patterns.state.states.ActiveStateTest
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.019 s -- in mx.unam.ciencias.myp.pumabank.test.patterns.state.states.ActiveStateTest

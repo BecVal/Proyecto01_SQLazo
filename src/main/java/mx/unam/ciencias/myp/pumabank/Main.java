@@ -16,6 +16,7 @@ public class Main {
 
     private static final List<String> INTEREST_TYPES = Arrays.asList("MONTHLY", "ANNUAL", "PREMIUM");
     private static final List<String> SERVICE_OPTIONS = Arrays.asList("ANTI_FRAUD", "PREMIUM_ALERTS", "REWARDS");
+    private static final String[] MONTH_NAMES = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 
     public static void main(String[] args) {
         System.out.println("=== PUMA BANK CLI ===\n");
@@ -73,12 +74,50 @@ public class Main {
 
         boolean running = true;
         while (running) {
-            System.out.println("Please choose an option:");
+            System.out.println("Please choose a menu:");
+            System.out.println("1) Quick Menu (For development testing)");
+            System.out.println("2) User Menu");
+            System.out.println("3) Exit");
+            System.out.print("> ");
+
+            String line = scanner.nextLine().trim();
+            int choice = -1;
+            try {
+                choice = Integer.parseInt(line);
+            } catch (NumberFormatException ignored) {}
+
+            switch (choice) {
+                case 1:
+                    runDeveloperMenu(pumaBank, scanner, rand);
+                    break;
+                case 2:
+                    runUserMenu(pumaBank, scanner, rand);
+                    break;
+                case 3:
+                    running = false;
+                    break;
+                default:
+                    System.out.println("Invalid option. Please enter a number between 1 and 3.");
+            }
+            System.out.println();
+        }
+
+        System.out.println("Exiting PumaBank CLI.");
+        scanner.close();
+    }
+
+    /**
+     * Runs the developer-focused menu with quick access to all features.
+     */
+    private static void runDeveloperMenu(PumaBankFacade pumaBank, Scanner scanner, Random rand) {
+        boolean devMenuRunning = true;
+        while (devMenuRunning) {
+            System.out.println("\n--- Quick Menu (Development) ---");
             System.out.println("1) Register User");
             System.out.println("2) Delete account");
             System.out.println("3) Consult users");
-            System.out.println("4) Simulation");
-            System.out.println("5) Exit");
+            System.out.println("4) Run full simulation");
+            System.out.println("5) Back to main menu");
             System.out.print("> ");
 
             String line = scanner.nextLine().trim();
@@ -175,12 +214,11 @@ public class Main {
                     break;
                 case 3:
                     System.out.println("\n Registered clients:");
-                    for (Client client : pumaBank.getAllClients()) {
-                        Map<String, Object> portfolio = pumaBank.getClientPortfolio(client.getClientId());
-            System.out.printf("- %s (ID: %s) | Accounts: %d | Total Balance: $%.2f\n",
-                client.getName(), client.getClientId(),
-                ((Integer) portfolio.get("totalAccounts")).intValue(),
-                ((Double) portfolio.get("totalBalance")).doubleValue());
+                    List<Client> clients = pumaBank.getAllClients();
+                    if (clients.isEmpty()) {
+                        System.out.println("No clients registered yet.");
+                    } else {
+                        clients.forEach(c -> System.out.printf("- %s (ID: %s)\n", c.getName(), c.getClientId()));
                     }
                     break;
                 case 4:
@@ -252,20 +290,150 @@ public class Main {
                     pumaBank.setQuietMode(false);
                     break;
                 case 5:
-                    running = false;
+                    devMenuRunning = false;
                     break;
                 default:
                     System.out.println("Invalid option. Please enter a number between 1 and 5.");
             }
             System.out.println();
         }
-
-        System.out.println("Exiting PumaBank CLI.");
-        scanner.close();
     }
 
+    /**
+     * Runs the user-focused menu, guiding them through account creation and basic operations.
+     */
+    private static void runUserMenu(PumaBankFacade pumaBank, Scanner scanner, Random rand) {
+        System.out.println("\n--- User Menu ---");
+        System.out.println("Welcome! Let's start by creating a new account for you.");
 
+        System.out.print("Enter your name: ");
+        String name = scanner.nextLine().trim();
+        if (name.isEmpty()) name = "User-" + (pumaBank.getAllClients().size() + 1);
 
+        String pin;
+        while (true) {
+            System.out.print("Create a 4-digit PIN for your account: ");
+            pin = scanner.nextLine().trim();
+            if (pin.matches("\\d{4}")) { 
+                break;
+            } else {
+                System.out.println("Invalid PIN. Please enter exactly 4 digits.");
+            }
+        }
+
+        double initialBalance = 0.0;
+        while (true) {
+            System.out.print("Enter initial deposit amount (e.g., 1500.00): ");
+            String balStr = scanner.nextLine().trim();
+            try {
+                initialBalance = Double.parseDouble(balStr);
+                if (initialBalance < 0) {
+                    System.out.println("Initial balance cannot be negative.");
+                    continue;
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid amount. Please enter a numeric value.");
+            }
+        }
+
+        System.out.print("Add extra services? (comma-separated: ANTI_FRAUD, PREMIUM_ALERTS, REWARDS) or leave empty: ");
+        String servicesLine = scanner.nextLine().trim().toUpperCase();
+        List<String> services = new ArrayList<>();
+        if (!servicesLine.isEmpty()) {
+            for (String s : servicesLine.split(",")) {
+                String service = s.trim();
+                if (SERVICE_OPTIONS.contains(service)) {
+                    services.add(service);
+                }
+            }
+        }
+
+        String clientId = "USR" + String.format("%03d", pumaBank.getAllClients().size() + 1);
+        Client newClient = pumaBank.registerClient(name, clientId);
+        pumaBank.createAccount(clientId, initialBalance, pin, "MONTHLY", services.isEmpty() ? null : services);
+        String accountId = clientId + "-ACC-1"; // Manually construct the ID for the client's first account.
+
+        System.out.printf("\nAccount created successfully for %s!\n", name);
+        System.out.printf("  - Account ID: %s\n", accountId);
+        System.out.println("------------------------------------");
+
+        boolean userMenuRunning = true;
+        int currentMonthIndex = 0;
+
+        while (userMenuRunning) {
+            System.out.printf("\n--- User Operations (Current Month: %s) ---\n", MONTH_NAMES[currentMonthIndex]);
+            System.out.println("1) Make a deposit");
+            System.out.println("2) Make a withdrawal");
+            System.out.println("3) Check balance");
+            System.out.println("4) View basic account information");
+            System.out.println("5) Go to next month");
+            System.out.println("6) Exit / End user simulation");
+            System.out.print("> ");
+
+            String line = scanner.nextLine().trim();
+            int choice = -1;
+            try {
+                choice = Integer.parseInt(line);
+            } catch (NumberFormatException ignored) {}
+
+            try {
+                switch (choice) {
+                    case 1: 
+                        System.out.print("Amount to deposit: ");
+                        double depositAmount = Double.parseDouble(scanner.nextLine().trim());
+                        String depositPin = promptForPin(scanner);
+                        pumaBank.deposit(accountId, depositAmount, depositPin);
+                        break;
+                    case 2:
+                        System.out.print("Amount to withdraw: ");
+                        double withdrawAmount = Double.parseDouble(scanner.nextLine().trim());
+                        String withdrawPin = promptForPin(scanner);
+                        pumaBank.withdraw(accountId, withdrawAmount, withdrawPin);
+                        break;
+                    case 3: 
+                        String balancePin = promptForPin(scanner);
+                        double balance = pumaBank.checkBalance(accountId, balancePin);
+                        System.out.printf("Current balance: $%.2f\n", balance);
+                        break;
+                    case 4: 
+                        String infoPin = promptForPin(scanner);
+                        double currentBalance = pumaBank.checkBalance(accountId, infoPin);
+                        System.out.println("Basic Account Information:");
+                        System.out.printf("  - Holder: %s\n", name);
+                        System.out.printf("  - Account ID: %s\n", accountId);
+                        System.out.printf("  - Current Balance: $%.2f\n", currentBalance);
+                        break;
+                    case 5: 
+                        pumaBank.processMonthlyOperations(currentMonthIndex + 1);
+                        currentMonthIndex = (currentMonthIndex + 1) % 12;
+                        System.out.printf("Processed end-of-month operations. Now in %s.\n", MONTH_NAMES[currentMonthIndex]);
+                        if (currentMonthIndex == 0) {
+                            System.out.println("A full year has passed. Annual interest (if applicable) has been applied.");
+                        }
+                        break;
+                    case 6: 
+                        userMenuRunning = false;
+                        break;
+                    default:
+                        System.out.println("Invalid option. Please choose a number from the menu.");
+                }
+            } catch (Exception e) {
+                System.out.println("An error occurred: " + e.getMessage());
+            }
+        }
+        System.out.println("Ending user session. Returning to main menu.");
+    }
+
+    /**
+     * Prompts the user to enter their PIN for an operation.
+     * @param scanner The scanner to read input from.
+     * @return The PIN entered by the user.
+     */
+    private static String promptForPin(Scanner scanner) {
+        System.out.print("Enter your PIN to confirm: ");
+        return scanner.nextLine().trim();
+    }
     private static List<String> collectAllAccountIds(PumaBankFacade facade) {
         List<String> ids = new ArrayList<>();
         for (Client client : facade.getAllClients()) {
