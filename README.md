@@ -91,6 +91,36 @@ docker run --rm -it pumabank
   * **`--rm`**: Borra el contenedor al terminar de ejecutarlo.
   * **`-it`**: Indica que el contenedor debe ser interactivo para que podamos interactuar con el programa en tiempo real.
 
+### Con Maven
+
+Prerrequisitos:
+
+Este proyecto también se puede gestionar con Apache Maven. Debes tener **Maven instalado** en tu sistema para usar estos comandos.
+
+Cómo limpiar y probar el proyecto:
+
+Puedes usar Maven para limpiar los archivos compilados (`.class`) y para ejecutar la suite de pruebas automatizadas.
+
+**Asegúrate de estar en el directorio raíz del proyecto (`Proyecto01_PumaBank/`) donde se encuentra el archivo `pom.xml`.**
+
+1.   Limpiar el proyecto
+
+El siguiente comando eliminará el directorio `target/` (donde Maven guarda los archivos compilados y los artefactos).
+
+```bash
+mvn clean
+```
+
+2.   Ejecutar las pruebas
+
+Este comando compilará el código y ejecutará todas las pruebas unitarias que se encuentran en `src/test/java/`.
+
+```bash
+mvn test
+```
+
+
+
 ## Análisis de Patrones de Diseño Utilizados
 
 Los patrones cumplen objetivos clave como la flexibilidad, extensibilidad y desacoplamiento de las clases. Estos son los patrones utilizados durante la implementación y el problema que resuelven:
