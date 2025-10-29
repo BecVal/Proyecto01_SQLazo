@@ -1,6 +1,12 @@
 package mx.unam.ciencias.myp.pumabank;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
+import java.util.Scanner;
+
 import mx.unam.ciencias.myp.pumabank.facade.PumaBankFacade;
 import mx.unam.ciencias.myp.pumabank.model.Client;
 
@@ -394,15 +400,19 @@ public class Main {
                     case 3: 
                         String balancePin = promptForPin(scanner);
                         double balance = pumaBank.checkBalance(accountId, balancePin);
-                        System.out.printf("Current balance: $%.2f\n", balance);
+                        if (balance != -1) {
+                            System.out.printf("Current balance: $%.2f\n", balance);
+                        }
                         break;
                     case 4: 
                         String infoPin = promptForPin(scanner);
                         double currentBalance = pumaBank.checkBalance(accountId, infoPin);
-                        System.out.println("Basic Account Information:");
-                        System.out.printf("  - Holder: %s\n", name);
-                        System.out.printf("  - Account ID: %s\n", accountId);
-                        System.out.printf("  - Current Balance: $%.2f\n", currentBalance);
+                        if (currentBalance != -1) {
+                            System.out.println("Basic Account Information:");
+                            System.out.printf("  - Holder: %s\n", name);
+                            System.out.printf("  - Account ID: %s\n", accountId);
+                            System.out.printf("  - Current Balance: $%.2f\n", currentBalance);
+                        }
                         break;
                     case 5: 
                         pumaBank.processMonthlyOperations(currentMonthIndex + 1);
