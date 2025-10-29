@@ -22,7 +22,7 @@ Cómo compilar y ejecutar:
 
 Puedes compilar y ejecutar el programa directamente desde la terminal usando los comandos `javac` y `java`.
 
-**Asegúrate de estar en el directorio raíz del proyecto (`Proyecto01_PumaBank/`) antes de ejecutar los siguientes comandos.**
+**Asegúrate de estar en el directorio raíz del proyecto (`Proyecto01_SQLazo/`) antes de ejecutar los siguientes comandos.**
 
 1.  Compilación
 
@@ -101,7 +101,7 @@ Cómo limpiar y probar el proyecto:
 
 Puedes usar Maven para limpiar los archivos compilados (`.class`) y para ejecutar la suite de pruebas automatizadas.
 
-**Asegúrate de estar en el directorio raíz del proyecto (`Proyecto01_PumaBank/`) donde se encuentra el archivo `pom.xml`.**
+**Asegúrate de estar en el directorio raíz del proyecto (`Proyecto01_SQLazo/`) donde se encuentra el archivo `pom.xml`.**
 
 1.   Limpiar el proyecto
 
